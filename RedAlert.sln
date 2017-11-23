@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedAlert", "RedAlert\RedAlert.csproj", "{682764EC-CF30-4840-BF91-0CF03059DBF4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedAlert.Services", "RedAlert.Services\RedAlert.Services.csproj", "{F8FE08D8-95C6-45C7-B242-7D21EACC6CC5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedAlert.Entities", "RedAlert.Entities\RedAlert.Entities.csproj", "{92488315-3C7F-43C3-AA67-144F9881416A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{682764EC-CF30-4840-BF91-0CF03059DBF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{682764EC-CF30-4840-BF91-0CF03059DBF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{682764EC-CF30-4840-BF91-0CF03059DBF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8FE08D8-95C6-45C7-B242-7D21EACC6CC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8FE08D8-95C6-45C7-B242-7D21EACC6CC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8FE08D8-95C6-45C7-B242-7D21EACC6CC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8FE08D8-95C6-45C7-B242-7D21EACC6CC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92488315-3C7F-43C3-AA67-144F9881416A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92488315-3C7F-43C3-AA67-144F9881416A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92488315-3C7F-43C3-AA67-144F9881416A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92488315-3C7F-43C3-AA67-144F9881416A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
