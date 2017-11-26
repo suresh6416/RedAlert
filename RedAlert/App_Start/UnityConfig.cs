@@ -50,6 +50,9 @@ namespace RedAlert
             // Register Mappings
             container.RegisterType<IAccountService, AccountService>();
             container.RegisterType<IActivityService, ActivityService>();
+            container.RegisterType<IAreaService, AreaService>();
+            container.RegisterType<IActivityInfoService, ActivityInfoService>();
+            container.RegisterType<IComplianceService, ComplianceService>();
         }
 
         public static IUnityContainer GetConfiguredContainer()

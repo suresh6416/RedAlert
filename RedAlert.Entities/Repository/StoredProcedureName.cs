@@ -9,5 +9,6 @@ namespace RedAlert.Entities.Repository
     public static class StoredProcedureName
     {
         public const string PRC_GET_USER_INFO = "PRC_GetUserInfo";
+        public const string PRC_GET_COMPLIANCES = "PRC_GetCompliances";
     }
 }
