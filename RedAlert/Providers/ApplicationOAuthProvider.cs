@@ -1,9 +1,13 @@
 ﻿using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
+using RedAlert.Common;
+using RedAlert.Entities.ComplexModels;
 using RedAlert.Entities.Context;
 using RedAlert.Entities.Models;
+using RedAlert.Entities.Repository;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -14,6 +18,11 @@ namespace RedAlert.Providers
     public class ApplicationOAuthProvider : OAuthAuthorizationServerProvider
     {
         private readonly string _publicClientId;
+
+        private HttpSessionStateBase Session
+        {
+            get { return new HttpSessionStateWrapper(HttpContext.Current.Session); }
+        }
 
         public ApplicationOAuthProvider(string publicClientId)
         {
@@ -27,19 +36,25 @@ namespace RedAlert.Providers
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
-            
-            using (var _webcontext = new APIContext())
+            using (APIContext _webcontext = new APIContext())
             {
-
                 var user = _webcontext.Users.Where<User>(record => record.UserName == context.UserName && record.Password == context.Password).FirstOrDefault();
+
                 if (user == null)
                 {
                     context.SetError("invalid_grant", "The user name or password is incorrect.");
                     return;
                 }
+                else
+                {                    
+                    var userInfo = StoredProcedure<UserInfo>.Execute(StoredProcedureName.PRC_GET_USER_INFO, new UserInfoParams { UserName = context.UserName }).FirstOrDefault();
+                    if (HttpContext.Current.Session[UIConstants.USER_INFO] == null)
+                    {
+                        HttpContext.Current.Session[UIConstants.USER_INFO] = userInfo;
+                    }
+                }
             }
-
-
+            
             ClaimsIdentity oAuthIdentity =
             new ClaimsIdentity(context.Options.AuthenticationType);
             ClaimsIdentity cookiesIdentity =

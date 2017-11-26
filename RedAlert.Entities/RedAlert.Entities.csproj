@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComplexModels\UserInfo.cs" />
     <Compile Include="Context\APIContext.cs" />
     <Compile Include="Models\Activity.cs" />
     <Compile Include="Models\ActivityInfo.cs" />
@@ -67,12 +68,14 @@
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\StoredProcedure.cs" />
+    <Compile Include="Repository\StoredProcedureName.cs" />
+    <Compile Include="Repository\StoredProcedureParams.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
