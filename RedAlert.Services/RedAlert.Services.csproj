@@ -50,10 +50,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\IAccountService.cs" />
+    <Compile Include="Contracts\IActivityInfoService.cs" />
     <Compile Include="Contracts\IActivityService.cs" />
     <Compile Include="Contracts\IAreaService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AccountService.cs" />
+    <Compile Include="Services\ActivityInfoService.cs" />
     <Compile Include="Services\ActivityService.cs" />
     <Compile Include="Services\AreaService.cs" />
   </ItemGroup>
