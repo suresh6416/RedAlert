@@ -31,7 +31,7 @@ namespace RedAlert.Controllers
             try
             {
                 result.Data = lAccount.Get();
-                HttpContext.Current.Session[UIConstants.USER_INFO] = result.Data;
+                //HttpContext.Current.Session[UIConstants.USER_INFO] = result.Data;
                 result.Status = OperationStatus.SUCCESS;
             }
             catch (Exception ex)
