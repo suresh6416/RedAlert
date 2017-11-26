@@ -51,9 +51,11 @@
   <ItemGroup>
     <Compile Include="Contracts\IAccountService.cs" />
     <Compile Include="Contracts\IActivityService.cs" />
+    <Compile Include="Contracts\IAreaService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AccountService.cs" />
     <Compile Include="Services\ActivityService.cs" />
+    <Compile Include="Services\AreaService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
