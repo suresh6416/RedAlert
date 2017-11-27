@@ -1,0 +1,69 @@
+﻿
+<div id="custom-bootstrap-menu" class="navbar navbar-default " role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#"><b>Red Alert</b></a>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center">
+        <div id="banner">
+            <h5>
+                <strong></strong>
+            </h5>
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <form name="frmLogin">
+            <div class="registrationform">
+                <div class="form-horizontal">
+                    <fieldset>
+                        <legend>Login <i class="fa fa-pencil pull-right"></i></legend>
+                        <div class="form-group float-label-control">
+                            <label class="col-sm-3 control-label">Username</label>
+                            <div class="col-lg-8">
+                                <input type="text" ng-model="User.UserName" placeholder="Username" class="form-control" name="username" required>
+                                <span class="help-block" ng-show="frmLogin.username.$error.required && frmLogin.username.$invalid && !frmLogin.username.$pristine">This is required.</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Password</label>
+                            <div class="col-lg-8">
+                                <input type="password" ng-model="User.Password" placeholder="Password" class="form-control" name="password" required>
+                                <span class="help-block" ng-show="frmLogin.password.$error.required && frmLogin.password.$invalid && !frmLogin.password.$pristine">This is required.</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-lg-9 col-lg-offset-3">
+                                <a class="btn btn-success" role="button" ng-disabled="frmLogin.$invalid || isLoading" ng-click="login()">
+                                    Login
+                                    <i class="fa fa-spinner fa-spin" ng-show="isLoading"></i>
+                                </a>
+                                <button type="button" class="btn btn-warning" ng-click="User.UserName = User.Password = ''">Reset</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $.backstretch(
+    [
+        "img/44.jpg",
+        "img/colorful.jpg",
+        "img/34.jpg",
+        "img/images.jpg"
+    ],
+
+    {
+        duration: 4500,
+        fade: 1500
+    }
+);
+</script>
+

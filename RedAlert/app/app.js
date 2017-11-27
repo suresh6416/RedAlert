@@ -1,18 +1,43 @@
-﻿var RedAlertApp = angular.module('RedAlertApp', ['ui.router', 'oc.lazyLoad', 'ui.bootstrap']);
+﻿var RedAlertApp = angular.module('RedAlertApp', ['ui.router', 'oc.lazyLoad', 'ui.bootstrap', 'ngAnimate', 'toaster']);
 
-RedAlertApp.controller('appController', ['$rootScope', '$scope', '$state', function ($rootScope, $scope, $state) {
-    
+RedAlertApp.controller('appController', ['$rootScope', '$scope', '$state', '$window', function ($rootScope, $scope, $state, $window) {
+    $rootScope.userToken = null;
+
+    $scope.logout = function () {
+        $rootScope.userToken = null;
+        $window.sessionStorage.removeItem('token');
+        $state.go('login');
+    }
 }]);
 
 RedAlertApp.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function ($stateProvider, $urlRouterProvider, $httpProvider) {
 
-    $urlRouterProvider.otherwise("/home/dashboard");
+    // Register the previously created AuthInterceptor.
+    $httpProvider.interceptors.push('authInterceptor');
+
+    $urlRouterProvider.otherwise("/login");
     var WEB_APP_NAME = "RedAlertApp";
 
     $stateProvider
+        .state('login', {
+            url: '/login',
+            abtract: true,
+            templateUrl: 'app/views/account/login.html',
+            data: { pageTitle: 'Login' },
+            controller: "accountController",
+            resolve: {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: WEB_APP_NAME,
+                        files: [
+                            'app/controllers/accountController.js'
+                        ]
+                    });
+                }]
+            }
+        })
         .state('home', {
             url: '/home',
-            abtract: true,
             templateUrl: 'app/views/layout/homeLayout.html'
         })
         .state('home.dashboard', {
@@ -30,5 +55,11 @@ RedAlertApp.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', fun
                     });
                 }]
             }
-        });        
+        });
 }]);
+
+/*Setup Red Alert App Constants*/
+RedAlertApp.constant('redAlertConstants', {
+    apiServiceBaseUri: 'http://localhost:4151'
+});
+

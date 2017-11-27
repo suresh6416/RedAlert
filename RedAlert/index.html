@@ -14,13 +14,21 @@
     <link href="Content/dist/skin-blue.css" rel="stylesheet" />
     <link href="Content/dist/jsgrid.min.css" rel="stylesheet" />
     <link href="Content/dist/theme.css" rel="stylesheet" />
+    <link href="Content/css/style.css" rel="stylesheet" />
+    <link href="Content/css/toaster.css" rel="stylesheet" />
     <!--END: Application CSS-->
-
+   
+    <!-- ============ Google fonts ============ -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css' />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300,800' rel='stylesheet' type='text/css' />
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
 </head>
 <body class="skin-blue sidebar-mini" style="height: auto; min-height: 100%;" ng-controller="appController">
 
     <div ui-view class="fade-in-up"> </div>
+    <toaster-container toaster-options="{'time-out': 3000,'position-class': 'toast-top-right'}"></toaster-container>
 
     <!--BEGIN: JQuery & AngularJS Scripts-->
     <script src="Scripts/jquery.min.js"></script>
@@ -29,6 +37,9 @@
     <script src="Scripts/plugins/ui-bootstrap-tpls-1.3.3.js"></script>
     <script src="Scripts/plugins/ocLazyLoad.min.js"></script>
     <script src="Scripts/plugins/underscore-min.js"></script>
+    <script src="Scripts/plugins/ngStorage.min.js"></script>
+    <script src="Scripts/plugins/toaster.js"></script>
+    <script src="Scripts/plugins/angular-animate.min.js"></script>
     <!--END: JQuery & AngularJS Scripts-->
 
     <!--BEGIN: UI Scripts-->
@@ -41,10 +52,13 @@
     <script src="Scripts/dist/adminlte.min.js"></script>
     <script src="Scripts/dist/jquery.jqGrid.min.js"></script>
     <script src="Scripts/dist/demo.js"></script>
+    <script src="Scripts/plugins/jquery.backstretch.js"></script>
     <!--END: UI Scripts-->
 
     <!--BEGIN: Application Level Scripts-->
     <script src="app/app.js"></script>
+    <script src="app/services/authInterceptor.js"></script>
+    <script src="app/services/accountService.js"></script>
     <!--END: Application Level Scripts-->
 </body>
 </html>
