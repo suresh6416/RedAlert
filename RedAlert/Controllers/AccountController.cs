@@ -24,7 +24,7 @@ namespace RedAlert.Controllers
         /// </summary>
         /// <returns></returns>        
         [HttpGet]
-        //[Authorize]
+        [Authorize]
         public OperationResult Get()
         {
             OperationResult result = new OperationResult();

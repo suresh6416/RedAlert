@@ -81,5 +81,26 @@ namespace RedAlert.Controllers
             }
             return result;
         }
+
+        /// <summary>
+        /// Get Current RecordId
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("GetCurrentRecordId")]
+        public OperationResult GetCurrentRecordId()
+        {
+            OperationResult result = new OperationResult();
+            try
+            {
+                result.Data = lActivity.GetCurrentRecordId();
+                result.Status = OperationStatus.SUCCESS;
+            }
+            catch (Exception ex)
+            {
+                result.ErrorMessage = ex.Message;
+            }
+            return result;
+        }
     }
 }
