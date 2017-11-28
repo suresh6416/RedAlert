@@ -12,6 +12,6 @@ namespace RedAlert.Services.Contracts
         List<ActivityInfo> Get();
         ActivityInfo GetById(int id);
         void Save(ActivityInfo data, string loggedInUserName);
-
+        int GetCurrentRecordId();
     }
 }

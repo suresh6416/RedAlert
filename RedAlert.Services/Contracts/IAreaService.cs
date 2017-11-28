@@ -12,5 +12,6 @@ namespace RedAlert.Services.Contracts
         List<Area> Get();
         Area GetById(int id);
         void Save(Area data, string loggedInUserName);
+        int GetCurrentRecordId();
     }
 }

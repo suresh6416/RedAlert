@@ -12,6 +12,6 @@ namespace RedAlert.Services.Contracts
         List<ComplianceResult> Get();
         ComplianceResult GetById(int id);
         void Save(ComplianceResult data, string loggedInUserName);
-
+        int GetCurrentRecordId();
     }
 }

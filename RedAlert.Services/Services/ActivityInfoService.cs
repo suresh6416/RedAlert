@@ -54,5 +54,13 @@ namespace RedAlert.Services.Services
 
             _webcontext.SaveChanges();
         }
+
+        public int GetCurrentRecordId()
+        {
+            var recordId = _webcontext.ActivityInfoes.OrderByDescending(a => a.ID)
+                            .Select(a => a.ID)
+                            .FirstOrDefault();
+            return ++recordId;
+        }
     }
 }

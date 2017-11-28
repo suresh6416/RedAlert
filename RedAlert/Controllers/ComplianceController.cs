@@ -11,6 +11,8 @@ using System.Web.Http;
 
 namespace RedAlert.Controllers
 {
+    [RoutePrefix("api/compliance")]
+    [Authorize]
     public class ComplianceController : BaseController
     {
         IComplianceService lCompliance;
@@ -72,6 +74,27 @@ namespace RedAlert.Controllers
             try
             {
                 lCompliance.Save(compliance, "");
+                result.Status = OperationStatus.SUCCESS;
+            }
+            catch (Exception ex)
+            {
+                result.ErrorMessage = ex.Message;
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Get Current RecordId
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("GetCurrentRecordId")]
+        public OperationResult GetCurrentRecordId()
+        {
+            OperationResult result = new OperationResult();
+            try
+            {
+                result.Data = lCompliance.GetCurrentRecordId();
                 result.Status = OperationStatus.SUCCESS;
             }
             catch (Exception ex)

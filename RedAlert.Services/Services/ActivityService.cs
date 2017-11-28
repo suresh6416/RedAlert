@@ -49,8 +49,8 @@ namespace RedAlert.Services.Services
         {           
             var recordId = _webcontext.Activities.OrderByDescending(a => a.ID)
                             .Select(a => a.ID)
-                            .First();            
-            return recordId++;
+                            .FirstOrDefault();            
+            return ++recordId;
         }
     }
 }
