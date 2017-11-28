@@ -296,13 +296,23 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
+    <Content Include="app\controllers\activityController.js" />
+    <Content Include="app\controllers\activityInfoController.js" />
+    <Content Include="app\controllers\areaController.js" />
+    <Content Include="app\controllers\complianceController.js" />
     <Content Include="app\controllers\dashboardController.js" />
     <Content Include="app\controllers\accountController.js" />
+    <Content Include="app\controllers\reportController.js" />
     <Content Include="app\services\accountService.js" />
     <Content Include="app\services\authInterceptor.js" />
     <Content Include="app\views\account\login.html" />
+    <Content Include="app\views\activity.html" />
+    <Content Include="app\views\activityInfo.html" />
+    <Content Include="app\views\area.html" />
+    <Content Include="app\views\compliance.html" />
     <Content Include="app\views\dashboard.html" />
     <Content Include="app\views\layout\homeLayout.html" />
+    <Content Include="app\views\reports.html" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />

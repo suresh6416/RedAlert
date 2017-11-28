@@ -67,3 +67,7 @@
 .has-error{
     color:red;
 }
+
+.content-wrapper {
+    min-height: 645px;
+}

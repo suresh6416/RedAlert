@@ -61,7 +61,88 @@ RedAlertApp.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', fun
                     });
                 }]
             }
+        })
+        .state('home.activity', {
+            url: '/activity',
+            templateUrl: 'app/views/activity.html',
+            data: { pageTitle: 'Activities' },
+            controller: "activityController",
+            resolve: {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: WEB_APP_NAME,
+                        files: [
+                            'app/controllers/activityController.js'
+                        ]
+                    });
+                }]
+            }
+        })
+        .state('home.activityInfo', {
+            url: '/activityInfo',
+            templateUrl: 'app/views/activityInfo.html',
+            data: { pageTitle: 'Activity Information' },
+            controller: "activityInfoController",
+            resolve: {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: WEB_APP_NAME,
+                        files: [
+                            'app/controllers/activityInfoController.js'
+                        ]
+                    });
+                }]
+            }
+        })
+        .state('home.area', {
+            url: '/area',
+            templateUrl: 'app/views/area.html',
+            data: { pageTitle: 'Area' },
+            controller: "areaController",
+            resolve: {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: WEB_APP_NAME,
+                        files: [
+                            'app/controllers/areaController.js'
+                        ]
+                    });
+                }]
+            }
+        })
+        .state('home.compliance', {
+            url: '/compliance',
+            templateUrl: 'app/views/compliance.html',
+            data: { pageTitle: 'Compliance' },
+            controller: "complianceController",
+            resolve: {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: WEB_APP_NAME,
+                        files: [
+                            'app/controllers/complianceController.js'
+                        ]
+                    });
+                }]
+            }
+        })
+        .state('home.reports', {
+            url: '/reports',
+            templateUrl: 'app/views/reports.html',
+            data: { pageTitle: 'Reports' },
+            controller: "reportController",
+            resolve: {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: WEB_APP_NAME,
+                        files: [
+                            'app/controllers/reportController.js'
+                        ]
+                    });
+                }]
+            }
         });
+
 }]);
 
 /*Setup Red Alert App Constants*/
