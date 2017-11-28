@@ -1,11 +1,17 @@
-﻿var RedAlertApp = angular.module('RedAlertApp', ['ui.router', 'oc.lazyLoad', 'ui.bootstrap', 'ngAnimate', 'toaster']);
+﻿var RedAlertApp = angular.module('RedAlertApp', ['ui.router', 'oc.lazyLoad', 'ui.bootstrap', 'ngAnimate', 'toaster', 'ngStorage']);
 
-RedAlertApp.controller('appController', ['$rootScope', '$scope', '$state', '$window', function ($rootScope, $scope, $state, $window) {
+RedAlertApp.controller('appController', ['$rootScope', '$scope', '$state', '$window', '$localStorage', function ($rootScope, $scope, $state, $window, $localStorage) {
     $rootScope.userToken = null;
+
+    var userInfo = $localStorage.userTokenStorage;
+    if (userInfo !== null) {
+        $rootScope.userToken = userInfo;
+    }
 
     $scope.logout = function () {
         $rootScope.userToken = null;
         $window.sessionStorage.removeItem('token');
+        $localStorage.userTokenStorage = null;
         $state.go('login');
     }
 }]);

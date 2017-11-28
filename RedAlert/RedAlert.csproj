@@ -310,7 +310,9 @@
     <Content Include="Content\css\daterangepicker.css" />
     <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\css\ionicons.min.css" />
+    <Content Include="Content\custom.css" />
     <Content Include="Content\dist\AdminLTE.min.css" />
+    <Content Include="Content\dist\icons-2x.png" />
     <Content Include="Content\dist\icons.png" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
