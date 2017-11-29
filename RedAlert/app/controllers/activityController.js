@@ -1,7 +1,7 @@
 ﻿angular.module('RedAlertApp').controller('activityController', ['$rootScope', '$scope', '$state', 'activityService', 'toaster', function ($rootScope, $scope, $state, activityService, toaster) {
     $scope.$on('$viewContentLoaded', function () {
         $scope.Activities = [];
-        $scope.Activity = "";
+        $scope.Activity = new ActivityModel();
         $scope.CurrentActivityId = 0;
         $scope.getCurrentRecordId();
         $scope.isLoading = false
@@ -20,7 +20,7 @@
         if ($scope.frmActivity.$valid) {
             activityService.save($scope.Activity).then(function (response) {
                 $scope.isLoading = false
-                $scope.Activity.Name = '';
+                $scope.Activity.Description = '';
                 $scope.getCurrentRecordId();
                 toaster.success({ title: "Success", body: "Activity saved successfully" });
             }, function (err) {
@@ -40,10 +40,20 @@
 
     $scope.getCurrentRecordId = function () {
         activityService.getCurrentRecordId().then(function (response) {
-            $scope.CurrentActivityId = response.Data;
+            $scope.Activity.Id = response.Data;
         }, function (err) {
             console.log(err);
         });
     };
 
 }]);
+
+function ActivityModel() {
+    this.Id = 0;
+    this.Description = "";
+    this.IsActive = true;
+    this.CreatedBy = "";
+    this.CreatedOn = "";
+    this.UpdatedBy = "";
+    this.UpdatedOn = "";
+}

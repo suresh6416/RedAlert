@@ -25,7 +25,9 @@ namespace RedAlert.Services.Services
 
         public void Save(Activity data, string loggedInUserName)
         {
-            if (data.ID == 0)
+            var module = _webcontext.Activities.Where(m => m.ID == data.ID).FirstOrDefault();
+
+            if (module == null)
             {
                 data.IsActive = true;
                 data.CreatedBy = loggedInUserName;
@@ -33,9 +35,7 @@ namespace RedAlert.Services.Services
                 _webcontext.Activities.Add(data);
             }
             else
-            {
-                var module = _webcontext.Activities.Where(m => m.ID == data.ID).FirstOrDefault();
-                module.Name = data.Name;
+            {                
                 module.Description = data.Description;
                 module.UpdatedBy = loggedInUserName;
                 module.UpdatedOn = DateTime.Now;

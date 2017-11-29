@@ -11,7 +11,10 @@ namespace RedAlert.Entities.Models.Mapping
             this.HasKey(t => t.ID);
 
             // Properties
-            this.Property(t => t.Name)
+            this.Property(t => t.ID)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+
+            this.Property(t => t.Description)
                 .IsRequired()
                 .HasMaxLength(510);
 
@@ -25,7 +28,6 @@ namespace RedAlert.Entities.Models.Mapping
             // Table & Column Mappings
             this.ToTable("Activity");
             this.Property(t => t.ID).HasColumnName("ID");
-            this.Property(t => t.Name).HasColumnName("Name");
             this.Property(t => t.Description).HasColumnName("Description");
             this.Property(t => t.IsActive).HasColumnName("IsActive");
             this.Property(t => t.CreatedBy).HasColumnName("CreatedBy");

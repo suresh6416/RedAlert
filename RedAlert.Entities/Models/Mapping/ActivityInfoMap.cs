@@ -11,6 +11,9 @@ namespace RedAlert.Entities.Models.Mapping
             this.HasKey(t => t.ID);
 
             // Properties
+            this.Property(t => t.ID)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+
             this.Property(t => t.Type)
                 .HasMaxLength(255);
 
@@ -61,10 +64,10 @@ namespace RedAlert.Entities.Models.Mapping
             // Relationships
             this.HasOptional(t => t.Activity)
                 .WithMany(t => t.ActivityInfoes)
-                .HasForeignKey(d => d.AreaId);
+                .HasForeignKey(d => d.ActivityId);
             this.HasOptional(t => t.Area)
                 .WithMany(t => t.ActivityInfoes)
-                .HasForeignKey(d => d.ActivityId);
+                .HasForeignKey(d => d.AreaId);
 
         }
     }
