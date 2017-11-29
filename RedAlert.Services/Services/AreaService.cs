@@ -36,7 +36,7 @@ namespace RedAlert.Services.Services
             {
                 var module = _webcontext.Areas.Where(m => m.ID == data.ID).FirstOrDefault();
                 module.Name = data.Name;
-                module.Description = data.Description;
+                module.Code = data.Code;
                 module.UpdatedBy = loggedInUserName;
                 module.UpdatedOn = DateTime.Now;
             }

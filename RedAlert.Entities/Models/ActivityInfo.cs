@@ -30,7 +30,7 @@ namespace RedAlert.Entities.Models
         public string UpdatedBy { get; set; }
         public Nullable<System.DateTime> UpdatedOn { get; set; }
         public virtual Activity Activity { get; set; }
-        public virtual ICollection<Compliance> Compliances { get; set; }
         public virtual Area Area { get; set; }
+        public virtual ICollection<Compliance> Compliances { get; set; }
     }
 }

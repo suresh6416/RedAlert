@@ -9,7 +9,7 @@
         var _get = function () {
             var deferred = $q.defer();
 
-            $http.get(serviceBase + 'api/activity').success(function (response) {
+            $http.get(serviceBase + '/api/activity').success(function (response) {
                 deferred.resolve(response);
             }).error(function (err, status) {
                 deferred.reject(err);
@@ -22,7 +22,7 @@
         var _save = function (data) {
             var deferred = $q.defer();
 
-            $http.post(serviceBase + 'api/activity', data).success(function (response) {
+            $http.post(serviceBase + '/api/activity', data).success(function (response) {
                 deferred.resolve(response);
             }).error(function (err, status) {
                 deferred.reject(err);
@@ -35,7 +35,7 @@
         var _getById = function (id) {
             var deferred = $q.defer();
 
-            $http.get(serviceBase + 'api/activity/GetById/' + id).success(function (response) {
+            $http.get(serviceBase + '/api/activity/GetById/' + id).success(function (response) {
                 deferred.resolve(response);
             }).error(function (err, status) {
                 deferred.reject(err);
@@ -48,7 +48,7 @@
         var _getCurrentRecordId = function () {
             var deferred = $q.defer();
 
-            $http.post(serviceBase + 'api/activity/GetCurrentRecordId').success(function (response) {
+            $http.get(serviceBase + '/api/activity/GetCurrentRecordId').success(function (response) {
                 deferred.resolve(response);
             }).error(function (err, status) {
                 deferred.reject(err);

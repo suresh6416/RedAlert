@@ -61,10 +61,10 @@ namespace RedAlert.Entities.Models.Mapping
             // Relationships
             this.HasOptional(t => t.Activity)
                 .WithMany(t => t.ActivityInfoes)
-                .HasForeignKey(d => d.ActivityId);
+                .HasForeignKey(d => d.AreaId);
             this.HasOptional(t => t.Area)
                 .WithMany(t => t.ActivityInfoes)
-                .HasForeignKey(d => d.AreaId);
+                .HasForeignKey(d => d.ActivityId);
 
         }
     }

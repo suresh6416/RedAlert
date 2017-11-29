@@ -15,9 +15,6 @@ namespace RedAlert.Entities.Models.Mapping
                 .IsRequired()
                 .HasMaxLength(510);
 
-            this.Property(t => t.Code)
-                .HasMaxLength(510);
-
             this.Property(t => t.CreatedBy)
                 .IsRequired()
                 .HasMaxLength(255);
@@ -29,7 +26,7 @@ namespace RedAlert.Entities.Models.Mapping
             this.ToTable("Activity");
             this.Property(t => t.ID).HasColumnName("ID");
             this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.Code).HasColumnName("Code");
+            this.Property(t => t.Description).HasColumnName("Description");
             this.Property(t => t.IsActive).HasColumnName("IsActive");
             this.Property(t => t.CreatedBy).HasColumnName("CreatedBy");
             this.Property(t => t.CreatedOn).HasColumnName("CreatedOn");
