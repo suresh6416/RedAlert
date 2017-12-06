@@ -49,7 +49,7 @@
             var deferred = $q.defer();
 
             $http.get(serviceBase + '/api/activity/GetCurrentRecordId').success(function (response) {
-                deferred.resolve(response);
+                deferred .resolve(response);
             }).error(function (err, status) {
                 deferred.reject(err);
             });

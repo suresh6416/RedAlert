@@ -13,7 +13,7 @@
     <!-- Main content -->
     <section class="content">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12"> 
                 <div class="box box-info">
                     <div class="box-body">
                         <form name="frmActivity">
@@ -38,15 +38,20 @@
                                             <i class="fa fa-floppy-o"></i> Save
                                             <i class="fa fa-spinner fa-spin" ng-show="isLoading"></i>
                                         </button>
-                                        <button type="button" class="btn btn-info"><i class="fa fa-times"></i> View</button>
+                                        <button type="button" ng-click="get();isShowActivities=true" class="btn btn-info"><i class="fa fa-times"></i> View</button>
                                     </div>
                                 </div>
                             </div>
                         </form>
-                    </div>
+
+                        <div id="jsGrid" ng-if="isShowActivities"></div>
+                      
+                 </div>
+
                 </div>
             </div>
         </div>
+      
     </section>
 </div>
 <!-- /.content-wrapper -->

@@ -286,6 +286,7 @@
     <Compile Include="Controllers\AreaController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ComplianceController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -325,6 +326,7 @@
     <Content Include="Content\dist\AdminLTE.min.css" />
     <Content Include="Content\dist\icons-2x.png" />
     <Content Include="Content\dist\icons.png" />
+    <Content Include="Content\dist\jsgrid-theme.min.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\fonts\LICENSE_OFL.txt" />
@@ -390,6 +392,8 @@
     <Content Include="Content\fonts\NotoSansTeluguUI-Regular.ttf" />
     <Content Include="Content\fonts\README" />
     <Content Include="Content\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\fonts\ionicons.ttf" />
+    <Content Include="Content\fonts\ionicons.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dist\adminlte.min.js" />
     <Content Include="Scripts\dist\bootstrap.min.js" />
@@ -407,6 +411,7 @@
     <Content Include="Scripts\plugins\angular-animate.min.js" />
     <Content Include="Scripts\plugins\angular-ui-router.min.js" />
     <Content Include="Scripts\plugins\jquery.backstretch.js" />
+    <Content Include="Scripts\plugins\jsgrid.min.js" />
     <Content Include="Scripts\plugins\ngStorage.min.js" />
     <Content Include="Scripts\plugins\ocLazyLoad.min.js" />
     <Content Include="Content\css\toaster.css" />
