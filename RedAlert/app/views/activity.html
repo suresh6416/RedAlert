@@ -48,7 +48,7 @@
                         
                         <div id="divActivityGrid" ng-if="isShowActivities">
                             <table ng-table="tableParams" class="table" show-filter="true">
-                                <tr ng-repeat="data in $data">
+                                <tr ng-repeat="data in $data" ng-class="{'selected':data.ID == selectedRow}">
                                     <td title="'ID'" filter="{ ID: 'number'}" sortable="'ID'" class="text-center">
                                         {{data.ID}}
                                     </td>
@@ -59,7 +59,7 @@
                                         {{data.CreatedOn | date:'dd-MMM-yyyy'}}
                                     </td>
                                     <td data-title="'Action(s)'" class="text-center">                                        
-                                        <button class="btn btn-default btn-sm" uib-tooltip="Edit" ng-click="getById(data)"><span class="fa fa-edit"></span></button>
+                                        <button class="btn btn-default btn-sm" uib-tooltip="Edit" ng-click="getById(data)" ><span class="fa fa-edit"></span></button>
                                         <!--<button class="btn btn-danger btn-sm" uib-tooltip="Delete"><span class="fa fa-trash"></span></button>-->
                                     </td>
                                 </tr>

@@ -91,6 +91,7 @@ img
 {
       background: #333;
 	background: rgba(51, 51, 51, 0.1);
+    margin-left:-35px;
 }
 
 .registrationform
@@ -182,3 +183,7 @@ input[type="text"]:-moz-placeholder, textarea:-moz-placeholder, textarea.form-co
 }
 input[type="text"]:-ms-input-placeholder, textarea:-ms-input-placeholder, textarea.form-control:-ms-input-placeholder { color: #999999; }
 input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placeholder, textarea.form-control::-webkit-input-placeholder { color: #999999; }
+
+.selected {
+background-color:#eee;
+}
