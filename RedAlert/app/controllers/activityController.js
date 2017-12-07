@@ -37,6 +37,7 @@
     $scope.getById = function (activity) {
         activityService.getById(activity.ID).then(function (response) {            
             $scope.Activity = response.Data;
+            $scope.selectedRow = activity.ID;
         }, function (err) {
             console.log(err);
         });
