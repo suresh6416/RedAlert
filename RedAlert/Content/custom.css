@@ -71,3 +71,8 @@
 .content-wrapper {
     min-height: 645px;
 }
+
+.ng-table .selected td {
+    background-color:#96e1e8;
+    font-weight:bold;
+}

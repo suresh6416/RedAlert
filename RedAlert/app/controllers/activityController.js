@@ -43,6 +43,11 @@
         });
     };
 
+    $scope.clear = function () {
+        $scope.Activity = new ActivityModel();
+        $scope.getCurrentRecordId();
+    };
+
     $scope.getCurrentRecordId = function () {
         activityService.getCurrentRecordId().then(function (response) {
             $scope.Activity.ID = response.Data;
