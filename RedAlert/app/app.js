@@ -1,4 +1,4 @@
-﻿var RedAlertApp = angular.module('RedAlertApp', ['ui.router', 'oc.lazyLoad', 'ui.bootstrap', 'ngAnimate', 'toaster', 'ngStorage']);
+﻿var RedAlertApp = angular.module('RedAlertApp', ['ui.router', 'oc.lazyLoad', 'ui.bootstrap', 'ngAnimate', 'toaster', 'ngStorage','ngTable']);
 
 RedAlertApp.controller('appController', ['$rootScope', '$scope', '$state', '$window', '$localStorage', function ($rootScope, $scope, $state, $window, $localStorage) {
     $rootScope.userToken = null;

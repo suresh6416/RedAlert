@@ -1,22 +1,18 @@
-﻿angular.module('RedAlertApp').controller('activityController', ['$rootScope', '$scope', '$state', 'activityService', 'toaster', '$filter', function ($rootScope, $scope, $state, activityService, toaster,$filter) {
+﻿angular.module('RedAlertApp').controller('activityController', ['$rootScope', '$scope', '$state', 'activityService', 'toaster', '$filter', 'NgTableParams', function ($rootScope, $scope, $state, activityService, toaster, $filter, NgTableParams) {
     $scope.$on('$viewContentLoaded', function () {
         $scope.Activities = [];
-        $scope.Activity = new ActivityModel();
-        $scope.CurrentActivityId = 0;
+        $scope.Activity = new ActivityModel();        
         $scope.getCurrentRecordId();
         $scope.isLoading = false
         $scope.isShowActivities = false;
     });
 
    $scope.get = function () {
-        activityService.get().then(function (response) {
-            angular.forEach(response.Data, function (data) {                            
-                data.CreatedOn = $filter('date')(data.CreatedOn, 'MMM dd yyyy');
-                $scope.Activities.push(data);
-            });
-            $scope.Activities = response.Data;
-
-            loadGrid($scope.Activities);
+       activityService.get().then(function (response) {
+           $scope.Activities = response.Data;
+           $scope.tableParams = new NgTableParams({}, {
+               dataset: $scope.Activities
+           });                        
         }, function (err) {
             console.log(err);
         });
@@ -39,7 +35,7 @@
     };
 
     $scope.getById = function (activity) {
-        activityService.getById(activity.ID).then(function (response) {
+        activityService.getById(activity.ID).then(function (response) {            
             $scope.Activity = response.Data;
         }, function (err) {
             console.log(err);
@@ -48,21 +44,16 @@
 
     $scope.getCurrentRecordId = function () {
         activityService.getCurrentRecordId().then(function (response) {
-            $scope.Activity.Id = response.Data;
+            $scope.Activity.ID = response.Data;
         }, function (err) {
             console.log(err);
         });
-    };
-
-    //$scope.view = function () {
-    //    $scope.get();
-    //    $scope.isShowActivities = true;
-    //}
+    };   
 
 }]);
 
 function ActivityModel() {
-    this.Id = 0;
+    this.ID = 0;
     this.Description = "";
     this.IsActive = true;
     this.CreatedBy = "";
@@ -71,33 +62,3 @@ function ActivityModel() {
     this.UpdatedOn = "";
 }
 
-function loadGrid(list) {
-    $("#jsGrid").jsGrid({
-        height: "80%",
-        width: "100%",
- 
-        filtering: true,
-        editing: true,
-        sorting: true,
-        paging: true,
-        autoload: true,
-        
- 
-        pageSize: 5,
-        pageButtonCount: 5,
- 
-        deleteConfirm: "Do you really want to delete the activity?",
- 
-        data: list,
- 
-        fields: [
-            { name: "ID", type: "number", width: 50 },
-            { name: "Description", type: "text", width: 200},
-            { name: "CreatedOn", type: "text", width: 150 },
-            { type: "control" }
-        ]
-    });
- 
-
-
-}

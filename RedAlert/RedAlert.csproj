@@ -286,7 +286,6 @@
     <Compile Include="Controllers\AreaController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ComplianceController.cs" />
-    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -322,6 +321,7 @@
     <Content Include="Content\css\daterangepicker.css" />
     <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\css\ionicons.min.css" />
+    <Content Include="Content\css\ng-table.min.css" />
     <Content Include="Content\custom.css" />
     <Content Include="Content\dist\AdminLTE.min.css" />
     <Content Include="Content\dist\icons-2x.png" />
@@ -412,6 +412,7 @@
     <Content Include="Scripts\plugins\angular-ui-router.min.js" />
     <Content Include="Scripts\plugins\jquery.backstretch.js" />
     <Content Include="Scripts\plugins\jsgrid.min.js" />
+    <Content Include="Scripts\plugins\ng-table.min.js" />
     <Content Include="Scripts\plugins\ngStorage.min.js" />
     <Content Include="Scripts\plugins\ocLazyLoad.min.js" />
     <Content Include="Content\css\toaster.css" />

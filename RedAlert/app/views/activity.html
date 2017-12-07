@@ -16,36 +16,58 @@
             <div class="col-md-12"> 
                 <div class="box box-info">
                     <div class="box-body">
-                        <form name="frmActivity">
-                            <div class="form-horizontal">
-                                <div class="form-group">
-                                    <label class="control-label col-md-3">S.No :</label>
-                                    <div class="col-md-4">
-                                        <input type="text" class="form-control" ng-model="Activity.Id" disabled>
+                        <div id="divActivityForm">
+                            <form name="frmActivity">
+                                <div class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">S.No :</label>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" ng-model="Activity.ID" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Description :</label>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" name="description" ng-model="Activity.Description" required>
+                                            <span class="has-error" ng-show="frmActivity.description.$invalid && !frmActivity.description.$pristine">This is required.</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-offset-3 col-md-9">
+                                            <button type="button" class="btn btn-warning" ng-click="Activity.Description = ''"><i class="fa fa-file-o"></i> Clear</button>
+                                            <button type="button" class="btn btn-success" ng-click="save()" ng-disabled="frmActivity.$invalid || isLoading">
+                                                <i class="fa fa-floppy-o"></i> Save
+                                                <i class="fa fa-spinner fa-spin" ng-show="isLoading"></i>
+                                            </button>
+                                            <button type="button" ng-click="get();isShowActivities=true" class="btn btn-info"><i class="fa fa-times"></i> View</button>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label class="control-label col-md-3">Description :</label>
-                                    <div class="col-md-4">
-                                        <input type="text" class="form-control" name="description" ng-model="Activity.Description" required>
-                                        <span class="has-error" ng-show="frmActivity.description.$invalid && !frmActivity.description.$pristine">This is required.</span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-md-offset-3 col-md-9">
-                                        <button type="button" class="btn btn-warning" ng-click="Activity.Description = ''"><i class="fa fa-file-o"></i> Clear</button>
-                                        <button type="button" class="btn btn-success" ng-click="save()" ng-disabled="frmActivity.$invalid || isLoading">
-                                            <i class="fa fa-floppy-o"></i> Save
-                                            <i class="fa fa-spinner fa-spin" ng-show="isLoading"></i>
-                                        </button>
-                                        <button type="button" ng-click="get();isShowActivities=true" class="btn btn-info"><i class="fa fa-times"></i> View</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-
-                        <div id="jsGrid" ng-if="isShowActivities"></div>
-                      
+                            </form>
+                        </div>
+                        
+                        <div id="divActivityGrid" ng-if="isShowActivities">
+                            <table ng-table="tableParams" class="table" show-filter="true">
+                                <tr ng-repeat="data in $data">
+                                    <td title="'ID'" filter="{ ID: 'number'}" sortable="'ID'" class="text-center">
+                                        {{data.ID}}
+                                    </td>
+                                    <td title="'Description'" filter="{ Description: 'text'}" sortable="'Description'">
+                                        {{data.Description}}
+                                    </td>                                    
+                                    <td title="'Created Date'" filter="{ CreatedOn: 'text'}" sortable="'CreatedOn'" class="text-center">
+                                        {{data.CreatedOn | date:'dd-MMM-yyyy'}}
+                                    </td>
+                                    <td data-title="'Action(s)'" class="text-center">                                        
+                                        <button class="btn btn-default btn-sm" uib-tooltip="Edit" ng-click="getById(data)"><span class="fa fa-edit"></span></button>
+                                        <!--<button class="btn btn-danger btn-sm" uib-tooltip="Delete"><span class="fa fa-trash"></span></button>-->
+                                    </td>
+                                </tr>
+                                <tr ng-show="$data.length === 0">
+                                    <td colspan="3">No records found !</td>
+                                </tr>
+                            </table>
+                        </div>
                  </div>
 
                 </div>
