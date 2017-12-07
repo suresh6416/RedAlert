@@ -25,7 +25,9 @@ namespace RedAlert.Services.Services
 
         public void Save(Area data, string loggedInUserName)
         {
-            if (data.ID == 0)
+            var area = _webcontext.Areas.Where(m => m.ID == data.ID).FirstOrDefault();
+
+            if (area == null)
             {
                 data.IsActive = true;
                 data.CreatedBy = loggedInUserName;
@@ -33,12 +35,11 @@ namespace RedAlert.Services.Services
                 _webcontext.Areas.Add(data);
             }
             else
-            {
-                var module = _webcontext.Areas.Where(m => m.ID == data.ID).FirstOrDefault();
-                module.Name = data.Name;
-                module.Code = data.Code;
-                module.UpdatedBy = loggedInUserName;
-                module.UpdatedOn = DateTime.Now;
+            {                
+                area.Name = data.Name;
+                area.Code = data.Code;
+                area.UpdatedBy = loggedInUserName;
+                area.UpdatedOn = DateTime.Now;
             }
 
             _webcontext.SaveChanges();
