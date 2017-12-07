@@ -1,4 +1,4 @@
-﻿angular.module('RedAlertApp').controller('activityController', ['$rootScope', '$scope', '$state', 'activityService', 'toaster', '$filter', 'NgTableParams', function ($rootScope, $scope, $state, activityService, toaster, $filter, NgTableParams) {
+﻿angular.module('RedAlertApp').controller('activityController', ['$rootScope', '$scope', '$state', 'activityService', 'toaster', 'NgTableParams', function ($rootScope, $scope, $state, activityService, toaster , NgTableParams) {
     $scope.$on('$viewContentLoaded', function () {
         $scope.Activities = [];
         $scope.Activity = new ActivityModel();        
