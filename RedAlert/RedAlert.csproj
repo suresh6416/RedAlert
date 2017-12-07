@@ -286,6 +286,7 @@
     <Compile Include="Controllers\AreaController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ComplianceController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -305,7 +306,9 @@
     <Content Include="app\controllers\reportController.js" />
     <Content Include="app\services\accountService.js" />
     <Content Include="app\services\activityService.js" />
+    <Content Include="app\services\areaService.js" />
     <Content Include="app\services\authInterceptor.js" />
+    <Content Include="app\services\dashboardService.js" />
     <Content Include="app\views\account\login.html" />
     <Content Include="app\views\activity.html" />
     <Content Include="app\views\activityInfo.html" />

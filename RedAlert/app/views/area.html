@@ -16,7 +16,68 @@
             <div class="col-md-12">
                 <div class="box box-info">
                     <div class="box-body">
+                        <div id="divAreaForm">
+                            <form name="frmArea">
+                                <div class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">S.No :</label>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" ng-model="Area.ID" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Name :</label>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" name="description" ng-model="Area.Name" required>
+                                            <span class="has-error" ng-show="frmArea.description.$invalid && !frmArea.description.$pristine">This is required.</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Code :</label>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" name="code" ng-model="Area.Code" required>
+                                            <span class="has-error" ng-show="frmArea.code.$invalid && !frmArea.code.$pristine">This is required.</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-offset-3 col-md-9">
+                                            <button type="button" class="btn btn-warning" ng-click="Area.Description = '';Area.Code=''"><i class="fa fa-file-o"></i> Clear</button>
+                                            <button type="button" class="btn btn-success" ng-click="save()" ng-disabled="frmArea.$invalid || isLoading">
+                                                <i class="fa fa-floppy-o"></i> Save
+                                                <i class="fa fa-spinner fa-spin" ng-show="isLoading"></i>
+                                            </button>
+                                            <button type="button" ng-click="get();isShowAreaGrid=true" class="btn btn-info"><i class="fa fa-times"></i> View</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
 
+                        <div id="divAreaGrid" ng-if="isShowAreaGrid">
+                            <table ng-table="tableParams" class="table" show-filter="true">
+                                <tr ng-repeat="data in $data">
+                                    <td title="'ID'" filter="{ ID: 'number'}" sortable="'ID'" class="text-center">
+                                        {{data.ID}}
+                                    </td>
+                                    <td title="'Name'" filter="{ Name: 'text'}" sortable="'Name'">
+                                        {{data.Name}}
+                                    </td>
+                                    <td title="'Code'" filter="{ Code: 'text'}" sortable="'Code'">
+                                        {{data.Code}}
+                                    </td>
+                                    <td title="'Created Date'" filter="{ CreatedOn: 'text'}" sortable="'CreatedOn'" class="text-center">
+                                        {{data.CreatedOn | date:'dd-MMM-yyyy'}}
+                                    </td>
+                                    <td data-title="'Action(s)'" class="text-center">
+                                        <button class="btn btn-default btn-sm" uib-tooltip="Edit" ng-click="getById(data)"><span class="fa fa-edit"></span></button>
+                                        <!--<button class="btn btn-danger btn-sm" uib-tooltip="Delete"><span class="fa fa-trash"></span></button>-->
+                                    </td>
+                                </tr>
+                                <tr ng-show="$data.length === 0">
+                                    <td colspan="3">No records found !</td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
