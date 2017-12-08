@@ -305,6 +305,7 @@
     <Content Include="app\controllers\accountController.js" />
     <Content Include="app\controllers\reportController.js" />
     <Content Include="app\services\accountService.js" />
+    <Content Include="app\services\activityInfoService.js" />
     <Content Include="app\services\activityService.js" />
     <Content Include="app\services\areaService.js" />
     <Content Include="app\services\authInterceptor.js" />
