@@ -25,7 +25,9 @@ namespace RedAlert.Services.Services
 
         public void Save(ActivityInfo data, string loggedInUserName)
         {
-            if (data.ID == 0)
+            var activityInfo = _webcontext.ActivityInfoes.Where(m => m.ID == data.ID).FirstOrDefault();
+
+            if (activityInfo == null)
             {
                 data.IsActive = true;
                 data.CreatedBy = loggedInUserName;
@@ -33,23 +35,22 @@ namespace RedAlert.Services.Services
                 _webcontext.ActivityInfoes.Add(data);
             }
             else
-            {
-                var module = _webcontext.ActivityInfoes.Where(m => m.ID == data.ID).FirstOrDefault();
-                module.AreaId = data.AreaId;
-                module.ActivityId = data.ActivityId;
-                module.Type = data.Type;
-                module.Periodicity = data.Periodicity;
-                module.PeriodicityType = data.PeriodicityType;
-                module.AdvnaceAlert = data.AdvnaceAlert;
-                module.AdvnaceAlertType = data.AdvnaceAlertType;
-                module.PreviousDate = data.PreviousDate;
-                module.NextDueDate = data.NextDueDate;
-                module.StartJobDate = data.StartJobDate;
-                module.PreRespPerson = data.PreRespPerson;
-                module.SecRespPerson = data.SecRespPerson;
-                module.Status = data.Status;
-                module.UpdatedBy = loggedInUserName;
-                module.UpdatedOn = DateTime.Now;
+            {                
+                activityInfo.AreaId = data.AreaId;
+                activityInfo.ActivityId = data.ActivityId;
+                activityInfo.Type = data.Type;
+                activityInfo.Periodicity = data.Periodicity;
+                activityInfo.PeriodicityType = data.PeriodicityType;
+                activityInfo.AdvnaceAlert = data.AdvnaceAlert;
+                activityInfo.AdvnaceAlertType = data.AdvnaceAlertType;
+                activityInfo.PreviousDate = data.PreviousDate;
+                activityInfo.NextDueDate = data.NextDueDate;
+                activityInfo.StartJobDate = data.StartJobDate;
+                activityInfo.PreRespPerson = data.PreRespPerson;
+                activityInfo.SecRespPerson = data.SecRespPerson;
+                activityInfo.Status = data.Status;
+                activityInfo.UpdatedBy = loggedInUserName;
+                activityInfo.UpdatedOn = DateTime.Now;
             }
 
             _webcontext.SaveChanges();

@@ -30,9 +30,12 @@ namespace RedAlert.Services.Services
 
         public void Save(ComplianceResult data, string loggedInUserName)
         {
-            if (data.ID == 0)
+            var comp = _webcontext.Compliances.Where(m => m.ID == data.ID).FirstOrDefault();
+
+            if (comp == null)
             {
-                Compliance comp = new Compliance();
+                comp = new Compliance();
+
                 comp.Description = data.Description;
                 comp.DueDate = data.DueDate;
                 comp.CompletionDate = data.CompletionDate;
@@ -50,8 +53,7 @@ namespace RedAlert.Services.Services
                 _webcontext.Compliances.Add(comp);
             }
             else
-            {
-                var comp = _webcontext.Compliances.Where(m => m.ID == data.ID).FirstOrDefault();
+            {                
                 comp.Description = data.Description;
                 comp.DueDate = data.DueDate;
                 comp.CompletionDate = data.CompletionDate;
