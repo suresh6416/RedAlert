@@ -1,0 +1,56 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using RedAlert.Services.Contracts;
+using RedAlert.Common;
+using System.Web.Http;
+
+
+
+namespace RedAlert.Controllers
+{
+    public class DataLookupController : BaseController
+    {
+        IDataLookupService lDataLookup;
+        public DataLookupController(IDataLookupService _lDataLookup)
+        {
+            lDataLookup = _lDataLookup;
+        }
+
+        [HttpGet]
+        [Route("AreaLookup")]
+        public OperationResult AreaLookup()
+        {
+            OperationResult result = new OperationResult();
+            try
+            {
+                result.Data = lDataLookup.AreaLookup();
+                result.Status = OperationStatus.SUCCESS;
+            }
+            catch (Exception ex)
+            {
+                result.ErrorMessage = ex.Message;
+            }
+            return result;
+        }
+
+        [HttpGet]
+        [Route("ActivityLookup")]
+        public OperationResult ActivityLookup()
+        {
+            OperationResult result = new OperationResult();
+            try
+            {
+                result.Data = lDataLookup.ActivityLookup();
+                result.Status = OperationStatus.SUCCESS;
+            }
+            catch (Exception ex)
+            {
+                result.ErrorMessage = ex.Message;
+            }
+            return result;
+        }
+
+    }
+}

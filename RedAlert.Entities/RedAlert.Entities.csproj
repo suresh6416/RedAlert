@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="ComplexModels\ComplianceResult.cs" />
     <Compile Include="ComplexModels\DashboardResult.cs" />
+    <Compile Include="ComplexModels\DataLookupModel.cs" />
     <Compile Include="ComplexModels\UserInfo.cs" />
     <Compile Include="Context\APIContext.cs" />
     <Compile Include="Models\Activity.cs" />

@@ -55,6 +55,7 @@
     <Compile Include="Contracts\IAreaService.cs" />
     <Compile Include="Contracts\IComplianceService.cs" />
     <Compile Include="Contracts\IDashboardService.cs" />
+    <Compile Include="Contracts\IDataLookupService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AccountService.cs" />
     <Compile Include="Services\ActivityInfoService.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="Services\AreaService.cs" />
     <Compile Include="Services\ComplianceService.cs" />
     <Compile Include="Services\DashboardService.cs" />
+    <Compile Include="Services\DataLookpService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
