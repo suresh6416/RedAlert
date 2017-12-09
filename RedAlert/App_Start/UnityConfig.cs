@@ -54,6 +54,7 @@ namespace RedAlert
             container.RegisterType<IActivityInfoService, ActivityInfoService>();
             container.RegisterType<IComplianceService, ComplianceService>();
             container.RegisterType<IDashboardService, DashboardService>();
+            container.RegisterType<IDataLookupService,DataLookupService>();
         }
 
         public static IUnityContainer GetConfiguredContainer()

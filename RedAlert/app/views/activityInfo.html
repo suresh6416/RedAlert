@@ -27,19 +27,18 @@
                                     <div class="form-group">
                                         <label class="control-label col-sm-4">Area Code :</label>
                                         <div class="col-sm-5">
-                                            <select class="form-control">
-                                                <option></option>
-                                                <option></option>
-                                                <option></option>
+                                            <select class="form-control" data-ng-model="SelectedArea" id="area"
+                                                    data-ng-options="a as a.Name for a in AreaLookup | orderBy:'ID' track by a.ID">
+                                                <option value="">Select</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-sm-4">Activity Code :</label>
                                         <div class="col-sm-5">
-                                            <select class="form-control">
-                                                <option></option>
-                                                <option></option>
+                                            <select class="form-control" data-ng-model="SelectedActivity" id="activity"
+                                                    data-ng-options="m as m.Name for m in ActivityLookup | orderBy:'ID' track by m.ID">
+                                                <option value="">Select</option>
                                             </select>
                                         </div>
                                     </div>

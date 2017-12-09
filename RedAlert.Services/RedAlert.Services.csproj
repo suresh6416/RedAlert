@@ -63,7 +63,7 @@
     <Compile Include="Services\AreaService.cs" />
     <Compile Include="Services\ComplianceService.cs" />
     <Compile Include="Services\DashboardService.cs" />
-    <Compile Include="Services\DataLookpService.cs" />
+    <Compile Include="Services\DataLookupServcie.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

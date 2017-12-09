@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RedAlert.Entities.ComplexModels;
 using RedAlert.Entities.Context;
+using RedAlert.Entities.ComplexModels;
 using RedAlert.Services.Contracts;
 
 namespace RedAlert.Services.Services
 {
-   public class DataLookpService : IDataLookupService
+    public class DataLookupService : IDataLookupService
     {
         public List<DataLookupModel> AreaLookup()
         {

@@ -1,11 +1,40 @@
-﻿angular.module('RedAlertApp').controller('activityInfoController', ['$rootScope', '$scope', '$state', 'toaster', function ($rootScope, $scope, $state,$toaster) {
+﻿angular.module('RedAlertApp').controller('activityInfoController', ['$rootScope', '$scope', '$state', 'toaster', 'activityInfoService', 'dataLookupService', function ($rootScope, $scope, $state, $toaster, activityInfoService, dataLookupService) {
     $scope.$on('$viewContentLoaded', function () {
         $scope.Activitiesinfo = [];
+        $scope.ActivityLookup = [];
+        $scope.AreaLookup = [];
         $scope.ActivityInfo = new ActivityInfoModel();
-        $scope.getCurrentRecordId();
+        $scope.getAreaLookup();
         $scope.isLoading = true;
        
     });
+
+    //Get Area Lookup
+    $scope.getAreaLookup = function () {
+        console.log(1);
+        dataLookupService.getAreaLookup().then(function (response) {
+        console.log(2);
+            $scope.AreaLookup = response.Data;
+            _.map($scope.AreaLookup, function (data) {
+                data.AreaId = data.ID;
+            });
+        }, function (err) {
+            console.log(err);
+        });
+    };
+
+
+    //Get Activity Lookup
+    $scope.getActivityLookup = function () {
+        dataLookupService.getActivityLookup().then(function (response) {
+            $scope.ActivityLookup = response.Data;
+            _.map($scope.ActivityLookup, function (data) {
+                data.ActivityId = data.ID;
+            });
+        }, function (err) {
+            console.log(err);
+        });
+    };
 
     $scope.get = function () {
         activityInfoService.get().then(function (response) {
@@ -48,7 +77,7 @@
         }
     };
 
-    function AreaModel() {
+    function ActivityInfoModel() {
         this.AreaId = '';
         this.ActivityId = "";
         this.Type = "";

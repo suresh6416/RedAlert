@@ -5,11 +5,15 @@ using System.Web;
 using RedAlert.Services.Contracts;
 using RedAlert.Common;
 using System.Web.Http;
+using RedAlert.Entities.Models;
 
 
 
 namespace RedAlert.Controllers
 {
+
+    [RoutePrefix("api/DataLookup")]
+    [Authorize]
     public class DataLookupController : BaseController
     {
         IDataLookupService lDataLookup;
