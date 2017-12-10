@@ -13,21 +13,16 @@
     <!-- Main content -->
     <section class="content">
         <div class="row">
-          
-            <div class="col-sm-3 col-md-6 col-xs-12 col-lg-12">
+            <div class="col-md-12">
                 <div class="box box-info">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Activity Information</h3>
-                    </div>
-                    <div class="box-body" style="padding:5px 0 0 0">
-                        <div class="hidden-md hidden-sm"><p class="invisible">div hide better look</p></div>
-                        <div class="col-sm-3 col-md-6 col-xs-12 col-lg-12">
-                            <div>
+                    <div class="box-body">
+                        <div id="divActivityInfoForm">
+                            <form name="frmActivityInfo">
                                 <div class="form-horizontal">
                                     <div class="form-group">
                                         <label class="control-label col-sm-4">Area Code :</label>
                                         <div class="col-sm-5">
-                                            <select class="form-control" data-ng-model="SelectedArea" id="area"
+                                            <select class="form-control" ng-model="SelectedArea" 
                                                     data-ng-options="a as a.Name for a in AreaLookup | orderBy:'ID' track by a.ID">
                                                 <option value="">Select</option>
                                             </select>
@@ -36,7 +31,7 @@
                                     <div class="form-group">
                                         <label class="control-label col-sm-4">Activity Code :</label>
                                         <div class="col-sm-5">
-                                            <select class="form-control" data-ng-model="SelectedActivity" id="activity"
+                                            <select class="form-control" ng-model="SelectedActivity" 
                                                     data-ng-options="m as m.Name for m in ActivityLookup | orderBy:'ID' track by m.ID">
                                                 <option value="">Select</option>
                                             </select>
@@ -45,90 +40,97 @@
                                     <div class="form-group">
                                         <label class="control-label col-sm-4">Type :</label>
                                         <div class="col-sm-5">
-                                            <select class="form-control">
-                                                <option>1</option>
-                                                <option>2</option>
+                                            <select class="form-control" ng-model="ActivityInfo.Type" ng-options="o as o for o in TypeList">
+                                                <option value="">Select</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-sm-4">Periodicity :</label>
                                         <div class="col-sm-2">
-                                            <input type="text" class="form-control" id="" placeholder="">
+                                            <input type="text" class="form-control" ng-model="ActivityInfo.Periodicity" placeholder="">
                                         </div>
                                         <div class="col-sm-3">
-                                            <select class="form-control">
-                                                <option>YEARS</option>
-                                                <option>MONTHS</option>
-                                                <option>DAYS</option>
+                                            <select class="form-control" ng-model="ActivityInfo.PeriodicityType" ng-options="o as o for o in DueTypeList">
+                                                <option value="">Select</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-sm-4">Advnace Alert Before Due Date :</label>
                                         <div class="col-sm-2">
-                                            <input type="text" class="form-control" id="" placeholder="">
+                                            <input type="text" class="form-control" ng-model="ActivityInfo.AdvnaceAlert" placeholder="">
                                         </div>
                                         <div class="col-sm-3">
-                                            <select class="form-control">
-                                                <option>YEARS</option>
-                                                <option>MONTHS</option>
-                                                <option>DAYS</option>
+                                            <select class="form-control" ng-model="ActivityInfo.AdvnaceAlertType" ng-options="o as o for o in DueTypeList">
+                                                <option value="">Select</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-sm-4">Previous Date :</label>
                                         <div class="col-sm-5">
-                                            <input type="date" class="form-control" id="" placeholder="">
+                                            <input type="date" class="form-control" ng-model="ActivityInfo.PreviousDate" placeholder="">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-sm-4">Next Due Date :</label>
                                         <div class="col-sm-5">
-                                            <input type="date" class="form-control" id="" placeholder="">
+                                            <input type="date" class="form-control" ng-model="ActivityInfo.NextDueDate" placeholder="">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-sm-4">Start Job Date :</label>
                                         <div class="col-sm-5">
-                                            <input type="date" class="form-control" id="" placeholder="">
+                                            <input type="date" class="form-control" ng-model="ActivityInfo.StartJobDate" placeholder="">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-sm-4">Pre.Resp.person :</label>
                                         <div class="col-sm-5">
-                                            <input type="text" class="form-control" id="" placeholder="">
+                                            <input type="text" class="form-control" ng-model="ActivityInfo.PreRespPerson" placeholder="">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-sm-4">Sec.Resp.person :</label>
                                         <div class="col-sm-5">
-                                            <input type="text" class="form-control" id="" placeholder="">
+                                            <input type="text" class="form-control" ng-model="ActivityInfo.SecRespPerson" placeholder="">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-sm-4">Status:</label>
                                         <div class="col-sm-5">
-                                            <select class="form-control">
-                                                <option>OPEN</option>
-                                                <option>PAUSE</option>
-                                                <option>CANCEL</option>
+                                            <select class="form-control" ng-model="ActivityInfo.Status" ng-options="o as o for o in StatusList">
+                                                <option value="">Select</option>
                                             </select>
                                         </div>
                                     </div>
-
+                                    <div class="form-group">
+                                        <div class="col-md-offset-3 col-md-9">
+                                            <button type="button" class="btn btn-warning" ng-click="clear()"><i class="fa fa-file-o"></i> Clear</button>
+                                            <button type="button" class="btn btn-success" ng-click="save()" ng-disabled="frmActivityInfo.$invalid || isLoading">
+                                                <i class="fa fa-floppy-o"></i> Save
+                                                <i class="fa fa-spinner fa-spin" ng-show="isLoading"></i>
+                                            </button>
+                                            <!--<button type="button" ng-click="get();isShowActivities=true" class="btn btn-info"><i class="fa fa-times"></i> View</button>-->
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
+
+                        <!--<div id="divActivityInfoGrid" ng-if="isShowActivities">
+                            
+                        </div>-->
                     </div>
+
                 </div>
             </div>
         </div>
 
-    
     </section>
     <!-- /.content-wrapper -->
+</div>
 
 
 

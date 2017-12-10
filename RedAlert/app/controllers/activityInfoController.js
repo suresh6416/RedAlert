@@ -1,23 +1,24 @@
 ﻿angular.module('RedAlertApp').controller('activityInfoController', ['$rootScope', '$scope', '$state', 'toaster', 'activityInfoService', 'dataLookupService', function ($rootScope, $scope, $state, $toaster, activityInfoService, dataLookupService) {
     $scope.$on('$viewContentLoaded', function () {
-        $scope.Activitiesinfo = [];
+        $scope.ActivitiesInfo = [];
         $scope.ActivityLookup = [];
         $scope.AreaLookup = [];
         $scope.ActivityInfo = new ActivityInfoModel();
         $scope.getAreaLookup();
-        $scope.isLoading = true;
+        $scope.getActivityLookup();
+        $scope.isLoading = false;
        
+        $scope.SelectedArea = "";
+        $scope.SelectedActivity = "";
+        $scope.TypeList = ['Open', 'Close'];
+        $scope.DueTypeList = ["Days", "Months", "Years"];
+        $scope.StatusList = ["Open", "Complete", "Cancel"];
     });
 
     //Get Area Lookup
-    $scope.getAreaLookup = function () {
-        console.log(1);
+    $scope.getAreaLookup = function () {        
         dataLookupService.getAreaLookup().then(function (response) {
-        console.log(2);
-            $scope.AreaLookup = response.Data;
-            _.map($scope.AreaLookup, function (data) {
-                data.AreaId = data.ID;
-            });
+            $scope.AreaLookup = response.Data;           
         }, function (err) {
             console.log(err);
         });
@@ -27,10 +28,7 @@
     //Get Activity Lookup
     $scope.getActivityLookup = function () {
         dataLookupService.getActivityLookup().then(function (response) {
-            $scope.ActivityLookup = response.Data;
-            _.map($scope.ActivityLookup, function (data) {
-                data.ActivityId = data.ID;
-            });
+            $scope.ActivityLookup = response.Data;           
         }, function (err) {
             console.log(err);
         });
@@ -38,9 +36,9 @@
 
     $scope.get = function () {
         activityInfoService.get().then(function (response) {
-            $scope.Activitiesinfo = response.Data;
+            $scope.ActivitiesInfo = response.Data;
             $scope.tableParams = new NgTableParams({}, {
-                dataset: $scope.Activitiesinfo
+                dataset: $scope.ActivitiesInfo
             });
         }, function (err) {
             console.log(err);
@@ -50,26 +48,14 @@
     $scope.save = function () {
         $scope.isLoading = true;
         if ($scope.frmActivityInfo.$valid) {
+            $scope.ActivityInfo.AreaId = $scope.SelectedArea.ID;
+            $scope.ActivityInfo.ActivityId = $scope.SelectedActivity.ID;
+
             activityInfoService.save($scope.ActivityInfo).then(function (response) {
                 $scope.isLoading = false
-                $scope.ActivityInfo.Description = '';
-                $scope.ActivityInfo.AreaId = '';
-                $scope.ActivityInfo.ActivityId = '';
-                $scope.ActivityInfo.Type = '';
-                $scope.ActivityInfo.Periodicity = '';
-                $scope.ActivityInfo.PeriodicityType = '';
-                $scope.ActivityInfo.AdvnaceAlert = '';
-                $scope.ActivityInfo.AdvnaceAlertType = '';
-                $scope.ActivityInfo.NextDueDate = '';
-                $scope.ActivityInfo.StartJobDate = '';
-                $scope.ActivityInfo.PreRespPerson = '';
-                $scope.ActivityInfo.SecRespPerson = '';
-                $scope.ActivityInfo.Status = '';
-                $scope.ActivityInfo.UpdatedBy = '';
-                $scope.ActivityInfo.UpdatedOn = '';
-                $scope.getCurrentRecordId();
+                $scope.ActivityInfo = new ActivityInfoModel();
                 $scope.get();
-                toaster.success({ title: "Success", body: "ActivityInfo saved successfully" });
+                toaster.success({ title: "Success", body: "Activity information saved successfully" });
             }, function (err) {
                 $scope.isLoading = false
                 toaster.error({ title: "Error", body: "Insertion Failed" });
@@ -81,7 +67,7 @@
         this.AreaId = '';
         this.ActivityId = "";
         this.Type = "";
-        this.Periodicity = true;
+        this.Periodicity = "";
         this.PeriodicityType = "";
         this.AdvnaceAlert = "";
         this.AdvnaceAlertType = "";
@@ -91,9 +77,6 @@
         this.SecRespPerson = "";
         this.Status = "";
         this.UpdatedBy = "";
-        this.UpdatedOn = "";
-        
+        this.UpdatedOn = "";        
     }
-
-
 }]);
