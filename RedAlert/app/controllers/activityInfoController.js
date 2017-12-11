@@ -5,7 +5,25 @@
         $scope.AreaLookup = [];
         $scope.ActivityInfo = new ActivityInfoModel();
         $scope.getAreaLookup();
+        $scope.getActivityLookup();
         $scope.isLoading = true;
+        $scope.Status = [{
+            Id: 1,
+            StatusDesc: "In Progress"
+        },
+        {
+            Id: 2,
+            StatusDesc: "On Hold"
+        },
+        {
+            Id: 3,
+            StatusDesc: "Closed"
+        },
+        {
+            Id: 4,
+            StatusDesc: "Cancelled"
+        }
+        ]
        
     });
 
@@ -94,6 +112,8 @@
         this.UpdatedOn = "";
         
     }
+
+  
 
 
 }]);
