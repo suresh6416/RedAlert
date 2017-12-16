@@ -21,6 +21,7 @@ namespace RedAlert.Entities.Context
             Configuration.ProxyCreationEnabled = false;
         }
 
+
         public DbSet<Activity> Activities { get; set; }
         public DbSet<ActivityInfo> ActivityInfoes { get; set; }
         public DbSet<Area> Areas { get; set; }

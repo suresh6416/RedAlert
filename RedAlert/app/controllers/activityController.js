@@ -10,7 +10,7 @@
    $scope.get = function () {
        activityService.get().then(function (response) {
            $scope.Activities = response.Data;
-           $scope.tableParams = new NgTableParams({}, {
+           $scope.tableParams = new NgTableParams({page:1, count:10}, {
                dataset: $scope.Activities
            });                        
         }, function (err) {
