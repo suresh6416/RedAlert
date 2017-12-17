@@ -22,7 +22,7 @@
                                     <div class="form-group">
                                         <label class="control-label col-sm-4">Area Code :</label>
                                         <div class="col-sm-5">
-                                            <select class="form-control" ng-model="SelectedArea" 
+                                            <select class="form-control" ng-model="SelectedArea"
                                                     data-ng-options="a as a.Name for a in AreaLookup | orderBy:'ID' track by a.ID">
                                                 <option value="">Select</option>
                                             </select>
@@ -32,7 +32,7 @@
                                     <div class="form-group">
                                         <label class="control-label col-sm-4">Activity Code :</label>
                                         <div class="col-sm-5">
-                                            <select class="form-control" ng-model="SelectedActivity" 
+                                            <select class="form-control" ng-model="SelectedActivity"
                                                     data-ng-options="m as m.Name for m in ActivityLookup | orderBy:'ID' track by m.ID">
                                                 <option value="">Select</option>
                                             </select>
@@ -52,7 +52,7 @@
                                         <label class="control-label col-sm-4">Periodicity :</label>
                                         <div class="col-sm-2">
                                             <input type="text" class="form-control" ng-model="ActivityInfo.Periodicity" placeholder="">
-                                            
+
                                             <span class="has-error" ng-show="frmActivityinfo.periodicity.$invalid && !frmActivityinfo.periodicity.$pristine">This is required.</span>
                                         </div>
                                         <div class="col-sm-3">
@@ -65,9 +65,9 @@
                                         <label class="control-label col-sm-4">Advnace Alert Before Due Date :</label>
                                         <div class="col-sm-2">
                                             <input type="text" class="form-control" ng-model="ActivityInfo.AdvnaceAlert" placeholder="">
-                                            
+
                                             <span class="has-error" ng-show="frmActivityinfo.advanceAlert.$invalid && !frmActivityinfo.advanceAlert.$pristine">This is required.</span>
-                                            
+
                                         </div>
                                         <div class="col-sm-3">
                                             <select class="form-control" ng-model="ActivityInfo.AdvnaceAlertType" ng-options="o as o for o in DueTypeList">
@@ -86,7 +86,7 @@
                                         <label class="control-label col-sm-4">Next Due Date :</label>
                                         <div class="col-sm-5">
                                             <input type="date" class="form-control" ng-model="ActivityInfo.NextDueDate" placeholder="">
-                                            
+
                                             <span class="has-error" ng-show="frmActivityinfo.nextDueDate.$invalid && !frmActivityinfo.nextDueDate.$pristine">This is required.</span>
 
                                         </div>
@@ -95,7 +95,7 @@
                                         <label class="control-label col-sm-4">Start Job Date :</label>
                                         <div class="col-sm-5">
                                             <input type="date" class="form-control" ng-model="ActivityInfo.StartJobDate" placeholder="">
-                                            
+
                                             <span class="has-error" ng-show="frmActivityinfo.startJobDate.$invalid && !frmActivityinfo.startJobDate.$pristine">This is required.</span>
                                         </div>
                                     </div>
@@ -103,7 +103,7 @@
                                         <label class="control-label col-sm-4">Pre.Resp.person :</label>
                                         <div class="col-sm-5">
                                             <input type="text" class="form-control" ng-model="ActivityInfo.PreRespPerson" placeholder="">
-                                            
+
                                             <span class="has-error" ng-show="frmActivityinfo.preRespPerson.$invalid && !frmActivityinfo.preRespPerson.$pristine">This is required.</span>
 
                                         </div>
@@ -112,7 +112,7 @@
                                         <label class="control-label col-sm-4">Sec.Resp.person :</label>
                                         <div class="col-sm-5">
                                             <input type="text" class="form-control" ng-model="ActivityInfo.SecRespPerson" placeholder="">
-                                           
+
                                             <span class="has-error" ng-show="frmActivityinfo.secRespPerson.$invalid && !frmActivityinfo.secRespPerson.$pristine">This is required.</span>
 
                                         </div>
@@ -128,85 +128,85 @@
                                     </div>
 
                                 </div>
-                                    </form>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-5">
-                <label class="checkbox-inline">
-                    <input type="checkbox">Show Paused/Cancelled Activity List
-                </label>
-            </div>
-        </div>
+</div>
+<div class="row">
+    <div class="col-sm-5">
+        <label class="checkbox-inline">
+            <input type="checkbox">Show Paused/Cancelled Activity List
+        </label>
+    </div>
+</div>
 
-        <div class="panel panel-primary">
-            <div class="panel-body" style="padding:5px 0 0 0">
+<div class="panel panel-primary">
+    <div class="panel-body" style="padding:5px 0 0 0">
 
-                <div class="col-md-12">
-                    <div class="row">
-                        <div class="table-responsive">
-                            <table class="table table-striped table-bordered" cellspacing="0" width="100%">
-                                <thead class="thead-default">
-                                    <tr>
-                                        <th>Area</th>
-                                        <th>AreaName</th>
-                                        <th>ActivityCode</th>
-                                        <th>Activity</th>
-                                        <th>Type</th>
-                                        <th>Periodicity</th>
-                                        <th>Period</th>
-                                        <th>RenewalPeriodity</th>
-                                        <th>RenewalPeroid</th>
-                                        <th>CurrentDate</th>
-                                        <th>NextDueDate</th>
-                                        <th>Next.Ren.Date</th>
-                                        <th>Pre.Resp.Person</th>
-                                        <th>Sec.Resp.Person</th>
-                                        <th>status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>2</td>
-                                        <td>3</td>
-                                        <td>4</td>
-                                        <td>5</td>
-                                        <td>1</td>
-                                        <td>2</td>
-                                        <td>3</td>
-                                        <td>4</td>
-                                        <td>5</td>
-                                        <td>1</td>
-                                        <td>2</td>
-                                        <td>3</td>
-                                        <td>4</td>
-                                        <td>5</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered" cellspacing="0" width="100%">
+                        <thead class="thead-default">
+                            <tr>
+                                <th>Area</th>
+                                <th>AreaName</th>
+                                <th>ActivityCode</th>
+                                <th>Activity</th>
+                                <th>Type</th>
+                                <th>Periodicity</th>
+                                <th>Period</th>
+                                <th>RenewalPeriodity</th>
+                                <th>RenewalPeroid</th>
+                                <th>CurrentDate</th>
+                                <th>NextDueDate</th>
+                                <th>Next.Ren.Date</th>
+                                <th>Pre.Resp.Person</th>
+                                <th>Sec.Resp.Person</th>
+                                <th>status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>4</td>
+                                <td>5</td>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>4</td>
+                                <td>5</td>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>4</td>
+                                <td>5</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <div class="form-group">
-                <div class="col-sm-offset-4 col-sm-8">
-                    <button type="button" class="btn btn-warning"><i class="fa fa-file-o" aria-hidden="true"></i> Delete</button>
-                    <button type="button" class="btn btn-info"><i class="fa fa-pencil" aria-hidden="true"></i>  Update</button>
-                    <button type="button" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i> Close</button>
-
-                </div>
-            </div>
+    <div class="form-group">
+        <div class="col-sm-offset-4 col-sm-8">
+            <button type="button" class="btn btn-warning"><i class="fa fa-file-o" aria-hidden="true"></i> Delete</button>
+            <button type="button" class="btn btn-info"><i class="fa fa-pencil" aria-hidden="true"></i>  Update</button>
+            <button type="button" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i> Close</button>
 
         </div>
-      
+    </div>
+
+</div>
+
     </section>
-    <!-- /.content-wrapper -->
+<!-- /.content-wrapper -->
 </div>
 
 

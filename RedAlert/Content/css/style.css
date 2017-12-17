@@ -144,10 +144,7 @@ legend
 
  textarea.form-control
 {
-    border-style: none none dotted none;
     border-width: 1px;
-    border-color: #FFFFFF !important;
-    color: #fff;
     -moz-border-radius: 0px;
     -webkit-border-radius: 0px;
     border-radius: 0px;
@@ -165,7 +162,7 @@ textarea,
 textarea.form-control {
 	padding-top: 10px;
 	padding-bottom: 10px;
-	line-height: 30px;   color: #fff;
+	line-height: 30px;   
 }
 
 input[type="text"]:focus, 

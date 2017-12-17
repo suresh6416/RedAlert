@@ -310,6 +310,7 @@
     <Content Include="app\services\activityService.js" />
     <Content Include="app\services\areaService.js" />
     <Content Include="app\services\authInterceptor.js" />
+    <Content Include="app\services\complianceService.js" />
     <Content Include="app\services\dashboardService.js" />
     <Content Include="app\services\dataLookupService.js" />
     <Content Include="app\views\account\login.html" />
