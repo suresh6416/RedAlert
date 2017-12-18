@@ -39,6 +39,7 @@
     $scope.getById = function (area) {
         areaService.getById(area.ID).then(function (response) {
             $scope.Area = response.Data;
+            $scope.selectedRow = area.ID;
         }, function (err) {
             console.log(err);
         });
