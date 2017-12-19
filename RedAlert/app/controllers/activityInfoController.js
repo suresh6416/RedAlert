@@ -4,7 +4,7 @@
         $scope.ActivityLookup = [];
         $scope.AreaLookup = [];
         $scope.ActivityInfo = new ActivityInfoModel();
-        $scope.isShowComplianceGrid = false;
+        $scope.isShowActivityInfoGrid = false;
         $scope.getAreaLookup();
         $scope.getActivityLookup();
         $scope.isLoading = false;
@@ -30,7 +30,7 @@
         $scope.SelectedActivity = "";
         $scope.TypeList = ['Open', 'Close'];
         $scope.DueTypeList = ["Days", "Weeks", "Months", "Years"];
-        $scope.StatusList = ["Open", "Complete", "Cancel"];
+        $scope.StatusList = ["Open", "Complete", "Cancel"];        
     });
 
     //Get Area Lookup
@@ -87,7 +87,7 @@
             $scope.ActivityInfo.PreviousDate = $filter('date')($scope.ActivityInfo.PreviousDate, "yyyy-MM-dd");
             $scope.ActivityInfo.NextDueDate = $filter('date')($scope.ActivityInfo.NextDueDate, "yyyy-MM-dd");
             $scope.ActivityInfo.StartJobDate = $filter('date')($scope.ActivityInfo.StartJobDate, "yyyy-MM-dd");
-            $scope.selectedRow = activityInfo.ID;
+            $scope.selectedRow = activityInfo.ID;            
         }, function (err) {
             console.log(err);
         });

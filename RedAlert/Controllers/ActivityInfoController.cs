@@ -72,7 +72,7 @@ namespace RedAlert.Controllers
             OperationResult result = new OperationResult();
             try
             {
-                lActivityInfo.Save(activity, "");
+                lActivityInfo.Save(activity, LoggedInUserName);
                 result.Status = OperationStatus.SUCCESS;
             }
             catch (Exception ex)

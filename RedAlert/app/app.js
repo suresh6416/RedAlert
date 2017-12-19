@@ -3,15 +3,22 @@
 RedAlertApp.controller('appController', ['$rootScope', '$scope', '$state', '$window', '$localStorage', function ($rootScope, $scope, $state, $window, $localStorage) {
     $rootScope.userToken = null;
 
-    var userInfo = $localStorage.userTokenStorage;
+    var userToken = $localStorage.userTokenStorage;
+    if (userToken !== null) {
+        $rootScope.userToken = userToken;
+    }
+
+    var userInfo = $localStorage.userInfoStorage;
     if (userInfo !== null) {
-        $rootScope.userToken = userInfo;
+        $rootScope.userInfo = userInfo;
     }
 
     $scope.logout = function () {
         $rootScope.userToken = null;
+        $rootScope.userInfo = "";
         $window.sessionStorage.removeItem('token');
         $localStorage.userTokenStorage = null;
+        $localStorage.userInfoStorage = null;
         $state.go('login');
     }
 }]);

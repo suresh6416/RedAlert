@@ -1,4 +1,5 @@
-﻿using RedAlert.Entities.Models;
+﻿using RedAlert.Entities.ComplexModels;
+using RedAlert.Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace RedAlert.Services.Contracts
 {
     public interface IAccountService
     {
-        List<User> Get();
+        UserInfo Get(string userName);
     }
 }

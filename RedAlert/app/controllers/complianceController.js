@@ -5,10 +5,11 @@
         $scope.Compliance = new ComplianceModel();
         $scope.getCurrentRecordId();
         $scope.getUsersLookup();
-        $scope.isShowComplianceGrid = false;
+        $scope.isShowComplianceGrid = true;
         $scope.isLoading = false;
         $scope.StatusList = ["Open", "Complete", "Cancel"];
         $scope.DeviationAcceptance = [{ value: "true", text: "Yes" }, { value: "false", text: "No" }];
+        $scope.get();
     });
 
     $scope.get = function () {
@@ -57,6 +58,7 @@
             $scope.Compliance.DueDate = $filter('date')($scope.Compliance.DueDate, "yyyy-MM-dd");
             $scope.Compliance.CompletionDate = $filter('date')($scope.Compliance.CompletionDate, "yyyy-MM-dd");
             $scope.selectedRow = compliance.ID;
+            $scope.isShowComplianceGrid = false;
         }, function (err) {
             console.log(err);
         });
@@ -64,7 +66,7 @@
 
     $scope.clear = function () {
         $scope.Compliance = new ComplianceModel();
-        $scope.getCurrentRecordId();
+        $scope.isShowComplianceGrid = true;
     };
 
     $scope.getCurrentRecordId = function () {

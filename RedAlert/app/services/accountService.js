@@ -19,9 +19,22 @@
             return deferred.promise;
         };
 
+        var _getUserInfo = function (user) {
+            var deferred = $q.defer();           
+
+            $http.get(serviceBase + '/api/Account/Get?user=' + user).success(function (response) {
+                deferred.resolve(response);
+            }).error(function (err, status) {
+                deferred.reject(err);
+            });
+
+            return deferred.promise;
+        };
+
 
         return {
-            login: _login
+            login: _login,
+            getUserInfo: _getUserInfo
         };
 
     }]);

@@ -1,7 +1,8 @@
 ﻿angular.module('RedAlertApp').controller('accountController', ['$rootScope', '$scope', '$state', '$window', '$location', 'accountService', 'toaster', '$localStorage', function ($rootScope, $scope, $state, $window, $location, accountService, toaster, $localStorage) {
     $scope.$on('$viewContentLoaded', function () {
         $scope.User = new User();
-        $scope.isLoading = false
+        $scope.isLoading = false;
+        $rootScope.userInfo = "";
     });
 
     /*BEGIN: Login User*/
@@ -9,7 +10,9 @@
         $scope.isLoading = true;
         accountService.login($scope.User).then(function (response) {            
             if (response !== null) {
-                $rootScope.userToken = response;
+                $rootScope.userToken = response;     
+                $scope.getUserInfo($scope.User.UserName);
+
                 $window.sessionStorage.setItem('token', response.access_token);
                 $localStorage.userTokenStorage = response;
                 $state.go('home.dashboard');
@@ -21,6 +24,17 @@
             toaster.error({ title: "Error", body: "Login failed" });
         });
     };
+
+    $scope.getUserInfo = function (user) {
+        accountService.getUserInfo(user).then(function (response) {
+            if (response !== null) {
+                $rootScope.userInfo = response.Data;
+                $localStorage.userInfoStorage = $rootScope.userInfo;
+            }
+        }, function (err) {
+            $rootScope.userInfo = "";
+        });
+    }
     /*END: Login User*/
 }]);
 
