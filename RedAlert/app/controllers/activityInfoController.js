@@ -1,9 +1,10 @@
-﻿angular.module('RedAlertApp').controller('activityInfoController', ['$rootScope', '$scope', '$state', 'toaster', 'activityInfoService', 'dataLookupService', function ($rootScope, $scope, $state, $toaster, activityInfoService, dataLookupService) {
+﻿angular.module('RedAlertApp').controller('activityInfoController', ['$rootScope', '$scope', '$state', 'toaster','NgTableParams','$filter', 'activityInfoService', 'dataLookupService', function ($rootScope, $scope, $state, $toaster, NgTableParams,$filter, activityInfoService, dataLookupService) {
     $scope.$on('$viewContentLoaded', function () {
         $scope.ActivitiesInfo = [];
         $scope.ActivityLookup = [];
         $scope.AreaLookup = [];
         $scope.ActivityInfo = new ActivityInfoModel();
+        $scope.isShowComplianceGrid = false;
         $scope.getAreaLookup();
         $scope.getActivityLookup();
         $scope.isLoading = true;
@@ -79,6 +80,19 @@
             });
         }
     };
+
+    $scope.getById = function (activityInfo) {
+        activityInfoService.getById(activityInfo.ID).then(function (response) {
+            $scope.ActivityInfo = response.Data;
+            $scope.ActivityInfo.PreviousDate = $filter('date')($scope.ActivityInfo.PreviousDate, "yyyy-MM-dd");
+            $scope.ActivityInfo.NextDueDate = $filter('date')($scope.ActivityInfo.NextDueDate, "yyyy-MM-dd");
+            $scope.ActivityInfo.StartJobDate = $filter('date')($scope.ActivityInfo.StartJobDate, "yyyy-MM-dd");
+            $scope.selectedRow = activityInfo.ID;
+        }, function (err) {
+            console.log(err);
+        });
+    };
+
 
     function ActivityInfoModel() {
         this.AreaId = '';
