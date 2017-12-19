@@ -26,7 +26,7 @@
                                                     data-ng-options="a as a.Name for a in AreaLookup | orderBy:'ID' track by a.ID">
                                                 <option value="">Select</option>
                                             </select>
-                                            <span class="has-error" ng-show="frmActivityinfo.areacode.$invalid && !frmActivityinfo.areacode.$pristine">This is required.</span>
+                                            <span class="has-error" ng-show="frmActivityInfo.areacode.$invalid && !frmActivityInfo.areacode.$pristine">This is required.</span>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -36,7 +36,7 @@
                                                     data-ng-options="m as m.Name for m in ActivityLookup | orderBy:'ID' track by m.ID">
                                                 <option value="">Select</option>
                                             </select>
-                                            <span class="has-error" ng-show="frmActivityinfo.activityCode.$invalid && !frmActivityinfo.activityCode.$pristine">This is required.</span>
+                                            <span class="has-error" ng-show="frmActivityInfo.activityCode.$invalid && !frmActivityInfo.activityCode.$pristine">This is required.</span>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -45,15 +45,15 @@
                                             <select class="form-control" ng-model="ActivityInfo.Type" ng-options="o as o for o in TypeList">
                                                 <option value="">Select</option>
                                             </select>
-                                            <span class="has-error" ng-show="frmActivityinfo.type.$invalid && !frmActivityinfo.type.$pristine">This is required.</span>
+                                            <span class="has-error" ng-show="frmActivityInfo.type.$invalid && !frmActivityInfo.type.$pristine">This is required.</span>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-sm-4">Periodicity :</label>
                                         <div class="col-sm-2">
-                                            <input type="text" class="form-control" ng-model="ActivityInfo.Periodicity" placeholder="">
+                                            <input type="number" class="form-control" ng-model="ActivityInfo.Periodicity" placeholder="">
 
-                                            <span class="has-error" ng-show="frmActivityinfo.periodicity.$invalid && !frmActivityinfo.periodicity.$pristine">This is required.</span>
+                                            <span class="has-error" ng-show="frmActivityInfo.periodicity.$invalid && !frmActivityInfo.periodicity.$pristine">This is required.</span>
                                         </div>
                                         <div class="col-sm-3">
                                             <select class="form-control" ng-model="ActivityInfo.PeriodicityType" ng-options="o as o for o in DueTypeList">
@@ -64,9 +64,9 @@
                                     <div class="form-group">
                                         <label class="control-label col-sm-4">Advnace Alert Before Due Date :</label>
                                         <div class="col-sm-2">
-                                            <input type="text" class="form-control" ng-model="ActivityInfo.AdvnaceAlert" placeholder="">
+                                            <input type="number" class="form-control" ng-model="ActivityInfo.AdvnaceAlert" placeholder="">
 
-                                            <span class="has-error" ng-show="frmActivityinfo.advanceAlert.$invalid && !frmActivityinfo.advanceAlert.$pristine">This is required.</span>
+                                            <span class="has-error" ng-show="frmActivityInfo.advanceAlert.$invalid && !frmActivityInfo.advanceAlert.$pristine">This is required.</span>
 
                                         </div>
                                         <div class="col-sm-3">
@@ -78,25 +78,26 @@
                                     <div class="form-group">
                                         <label class="control-label col-sm-4">Previous Date :</label>
                                         <div class="col-sm-5">
-                                            <input type="date" class="form-control" ng-model="ActivityInfo.PreviousDate" value="{{ActivityInfo.PreviousDate}}" placeholder="">
+                                            <input type="date" name="PreviousDate" class="form-control" ng-model="ActivityInfo.PreviousDate" value="{{ActivityInfo.PreviousDate}}" placeholder="">
+
+                                            <span class="has-error" ng-show="frmActivityInfo.PreviousDate.$invalid && !frmActivityInfo.PreviousDate.$pristine">This is required.</span>
                                         </div>
-                                        <span class="has-error" ng-show="frmActivityinfo.prevDate.$invalid && !frmActivityinfo.prevDate.$pristine">This is required.</span>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-sm-4">Next Due Date :</label>
                                         <div class="col-sm-5">
-                                            <input type="date" class="form-control" ng-model="ActivityInfo.NextDueDate" value="{{ActivityInfo.NextDueDate}}" placeholder="">
-
-                                            <span class="has-error" ng-show="frmActivityinfo.nextDueDate.$invalid && !frmActivityinfo.nextDueDate.$pristine">This is required.</span>
-
+                                            <input type="date" name="NextDueDate" class="form-control" ng-model="ActivityInfo.NextDueDate" value="{{ActivityInfo.NextDueDate}}" placeholder="">
+                                            <span class="has-error" ng-if="ActivityInfo.PreviousDate > ActivityInfo.NextDueDate">previous date must be less than nextdue date</span>
+                                            <span class="has-error" ng-show="frmActivityInfo.NextDueDate.$invalid && !frmActivityInfo.NextDueDate.$pristine">This is required.</span>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-sm-4">Start Job Date :</label>
                                         <div class="col-sm-5">
-                                            <input type="date" class="form-control" ng-model="ActivityInfo.StartJobDate"  value="{{ActivityInfo.StartJobDate}}" placeholder="">
-
-                                            <span class="has-error" ng-show="frmActivityinfo.startJobDate.$invalid && !frmActivityinfo.startJobDate.$pristine">This is required.</span>
+                                            <input type="date" name="StartJobDate" class="form-control" ng-model="ActivityInfo.StartJobDate"  value="{{ActivityInfo.StartJobDate}}" placeholder="">
+                                            <span class="has-error" ng-if="ActivityInfo.NextDueDate < ActivityInfo.StartJobDate" >NextDueDate date must be greater than StartJobDate</span>
+                                            <span class="has-error" ng-if="ActivityInfo.PreviousDate > ActivityInfo.StartJobDate">NextDueDate date must be greater than StartJobDate</span>
+                                            <span class="has-error" ng-show="frmActivityInfo.StartJobDate.$invalid && !frmActivityInfo.StartJobDate.$pristine">This is required.</span>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -104,7 +105,7 @@
                                         <div class="col-sm-5">
                                             <input type="text" class="form-control" ng-model="ActivityInfo.PreRespPerson" placeholder="">
 
-                                            <span class="has-error" ng-show="frmActivityinfo.preRespPerson.$invalid && !frmActivityinfo.preRespPerson.$pristine">This is required.</span>
+                                            <span class="has-error" ng-show="frmActivityInfo.preRespPerson.$invalid && !frmActivityInfo.preRespPerson.$pristine">This is required.</span>
 
                                         </div>
                                     </div>
@@ -113,7 +114,7 @@
                                         <div class="col-sm-5">
                                             <input type="text" class="form-control" ng-model="ActivityInfo.SecRespPerson" placeholder="">
 
-                                            <span class="has-error" ng-show="frmActivityinfo.secRespPerson.$invalid && !frmActivityinfo.secRespPerson.$pristine">This is required.</span>
+                                            <span class="has-error" ng-show="frmActivityInfo.secRespPerson.$invalid && !frmActivityInfo.secRespPerson.$pristine">This is required.</span>
 
                                         </div>
                                     </div>
@@ -123,7 +124,7 @@
                                             <select class="form-control" ng-model="ActivityInfo.Status" ng-options="o as o for o in StatusList">
                                                 <option value="">Select</option>
                                             </select>
-                                            <span class="has-error" ng-show="frmActivityinfo.status.$invalid && !frmActivityinfo.status.$pristine">This is required.</span>
+                                            <span class="has-error" ng-show="frmActivityInfo.status.$invalid && !frmActivityInfo.status.$pristine">This is required.</span>
                                         </div>
                                     </div>
                                     <div class="form-group">
