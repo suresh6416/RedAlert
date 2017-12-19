@@ -53,6 +53,11 @@
         });
     };
 
+    $scope.clear = function () {
+        $scope.Area = new AreaModel();
+        $scope.getCurrentRecordId();
+    };
+
     function AreaModel() {
         this.ID = 0;
         this.Name = "";

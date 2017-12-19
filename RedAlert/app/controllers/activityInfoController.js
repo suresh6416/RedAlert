@@ -7,7 +7,7 @@
         $scope.isShowComplianceGrid = false;
         $scope.getAreaLookup();
         $scope.getActivityLookup();
-        $scope.isLoading = true;
+        $scope.isLoading = false;
         $scope.Status = [{
             Id: 1,
             StatusDesc: "In Progress"
@@ -29,7 +29,7 @@
         $scope.SelectedArea = "";
         $scope.SelectedActivity = "";
         $scope.TypeList = ['Open', 'Close'];
-        $scope.DueTypeList = ["Days", "Months", "Years"];
+        $scope.DueTypeList = ["Days", "Weeks", "Months", "Years"];
         $scope.StatusList = ["Open", "Complete", "Cancel"];
     });
 
