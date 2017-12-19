@@ -1,8 +1,10 @@
-﻿angular.module('RedAlertApp').controller('complianceController', ['$rootScope', '$scope', '$state', 'complianceService', 'toaster', 'NgTableParams','$filter', function ($rootScope, $scope, $state, complianceService, toaster, NgTableParams,$filter) {
+﻿angular.module('RedAlertApp').controller('complianceController', ['$rootScope', '$scope', '$state', 'complianceService','dataLookupService', 'toaster', 'NgTableParams','$filter', function ($rootScope, $scope, $state, complianceService,dataLookupService, toaster, NgTableParams,$filter) {
     $scope.$on('$viewContentLoaded', function () {
         $scope.Compliances = [];
+        $scope.UsersList = [];
         $scope.Compliance = new ComplianceModel();
         $scope.getCurrentRecordId();
+        $scope.getUsersLookup();
         $scope.isShowComplianceGrid = false;
         $scope.isLoading = false;
         $scope.StatusList = ["Open", "Complete", "Cancel"];
@@ -16,6 +18,16 @@
                 dataset: $scope.Compliances
             });
             
+        }, function (err) {
+            console.log(err);
+        });
+    };
+
+
+    //Get Users Lookup
+    $scope.getUsersLookup = function () {
+        dataLookupService.getUsersLookup().then(function (response) {
+            $scope.UsersList = response.Data;
         }, function (err) {
             console.log(err);
         });

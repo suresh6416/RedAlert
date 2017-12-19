@@ -29,11 +29,10 @@ namespace RedAlert.Services.Services
 
         }
 
-        public List<DataLookupModel> StatusLookup()
+        public List<DataLookupModel> UsersLookup()
         {
-            var result = (from d in new APIContext().Areas
-                          where d.IsActive == true
-                          select new DataLookupModel { ID = d.ID, Name = d.Code }).ToList();
+            var result = (from d in new APIContext().Users
+                          select new DataLookupModel { Name = d.UserName }).ToList();
             return result;
 
         }

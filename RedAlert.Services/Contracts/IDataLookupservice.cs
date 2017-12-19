@@ -11,6 +11,6 @@ namespace RedAlert.Services.Contracts
     {
         List<DataLookupModel> AreaLookup();
         List<DataLookupModel> ActivityLookup();
-        List<DataLookupModel> StatusLookup();
+        List<DataLookupModel> UsersLookup();
     }
 }

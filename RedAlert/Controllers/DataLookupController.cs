@@ -56,5 +56,22 @@ namespace RedAlert.Controllers
             return result;
         }
 
+        [HttpGet]
+        [Route("UsersLookup")]
+        public OperationResult UsersLookup()
+        {
+            OperationResult result = new OperationResult();
+            try
+            {
+                result.Data = lDataLookup.UsersLookup();
+                result.Status = OperationStatus.SUCCESS;
+            }
+            catch (Exception ex)
+            {
+                result.ErrorMessage = ex.Message;
+            }
+            return result;
+        }
+
     }
 }

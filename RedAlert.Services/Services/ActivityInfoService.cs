@@ -6,21 +6,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RedAlert.Common;
+using RedAlert.Entities.ComplexModels;
+using RedAlert.Entities.Repository;
 
 namespace RedAlert.Services.Services
 {
     public class ActivityInfoService : IActivityInfoService
     {
         APIContext _webcontext = new APIContext();
-
-        public List<ActivityInfo> Get()
+        
+        public List<ActivityInfoResult> Get()
         {
-            return _webcontext.ActivityInfoes.Where(m => m.IsActive == true).ToList();
+            var activityInfo = StoredProcedure<ActivityInfoResult>.Execute(StoredProcedureName.PRC_GET_ACTIVITY_INFO, new StoredProcedureParams()).ToList();
+            return activityInfo;
         }
-
-        public ActivityInfo GetById(int id)
+        
+        public ActivityInfoResult GetById(int id)
         {
-            return _webcontext.ActivityInfoes.Where(m => m.ID == id && m.IsActive == true).FirstOrDefault();
+            var activityInfo = StoredProcedure<ActivityInfoResult>.Execute(StoredProcedureName.PRC_GET_ACTIVITY_INFO, new ActivityInfoResultResultParams { ActivityInfoID=id }).FirstOrDefault();
+            return activityInfo;
         }
 
         public void Save(ActivityInfo data, string loggedInUserName)

@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComplexModels\ActivityInfoResult.cs" />
     <Compile Include="ComplexModels\ComplianceResult.cs" />
     <Compile Include="ComplexModels\DashboardResult.cs" />
     <Compile Include="ComplexModels\DataLookupModel.cs" />

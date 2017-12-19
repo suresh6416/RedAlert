@@ -93,12 +93,16 @@
                                     <div class="form-group">
                                         <label class="control-label col-sm-3">Pre.Resp.Person: </label>
                                         <div class="col-md-3">
-                                            <input type="text" name="preRespperson" ng-model="Compliance.PreRespPerson" class="form-control" id="" placeholder="">
+                                            <select class="form-control" ng-model="Compliance.PreRespPerson" ng-options="u as u.Name for u in UsersList">
+                                                <option value="">Select</option>
+                                            </select>
                                             <span class="has-error" ng-show="frmCompliance.preRespperson.$invalid && !frmCompliance.preRespperson.$pristine">This is required.</span>
                                         </div>
                                         <label class="control-label col-sm-2">Sec.Resp.Person :</label>
                                         <div class="col-md-4">
-                                            <input type="text" name="secRespPerson" ng-model="Compliance.SecRespPerson" class="form-control" id="" placeholder="">
+                                            <select class="form-control" ng-model="Compliance.SecRespPerson" ng-options="u as u.Name for u in UsersList">
+                                                <option value="">Select</option>
+                                            </select>
                                             <span class="has-error" ng-show="frmCompliance.secRespPerson.$invalid && !frmCompliance.secRespPerson.$pristine">This is required.</span>
                                         </div>
                                     </div>
