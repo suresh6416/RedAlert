@@ -22,5 +22,11 @@ namespace RedAlert.Services.Services
             var activitiesProgress = StoredProcedure<DashboardResult>.Execute(StoredProcedureName.PRC_GET_ACTIVITIES_PROGRESS, new DashboardResultParams {UserName="ramesh" }).FirstOrDefault();
             return activitiesProgress;
         }
+
+        public List<ToDoListResult> GetToDoList()
+        {
+            var toDoList = StoredProcedure<ToDoListResult>.Execute(StoredProcedureName.PRC_GET_TODO_LIST, new ToDoListParams { UserName = "sankar" }).ToList();
+            return toDoList;
+        }
     }
 }

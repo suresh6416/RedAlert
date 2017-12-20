@@ -12,5 +12,7 @@ namespace RedAlert.Entities.Repository
         public const string PRC_GET_COMPLIANCES = "PRC_GetCompliances";
         public const string PRC_GET_ACTIVITIES_PROGRESS = "PRC_GetActivitiesProgress";
         public const string PRC_GET_ACTIVITY_INFO = "PRC_GetActivityInfo";
+        public const string PRC_GET_TODO_LIST = "PRC_GetToDoList";
+
     }
 }

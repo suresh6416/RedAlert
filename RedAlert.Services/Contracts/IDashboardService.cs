@@ -10,5 +10,6 @@ namespace RedAlert.Services.Contracts
     public interface IDashboardService
     {
         DashboardResult Get();
+        List<ToDoListResult> GetToDoList();
     }
 }

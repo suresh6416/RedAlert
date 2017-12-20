@@ -74,6 +74,52 @@
                                 </div>
                                 <!-- ./col -->
                             </div>
+
+                            <!-- TO DO List -->
+                            <div class="box box-primary">
+                                <div class="box-header">
+                                    <i class="ion ion-clipboard"></i>
+                                    <h3 class="box-title">To Do List</h3>
+                                   
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body">
+                                    <!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
+                                    <!--<ul class="todo-list" ng-repeat="list in ToDoList">
+                                        <li>
+                                            <!-- drag handle 
+                                            <span class="handle">
+                                                <i class="fa fa-ellipsis-v"></i>
+                                                <i class="fa fa-ellipsis-v"></i>
+                                            </span>
+                                            <!-- checkbox 
+                                            <input type="checkbox" value="">
+                                            <!-- todo text
+                                            <span class="text">{{list.Description}}</span>
+                                            <!-- Emphasis label 
+                                            <small class="label label-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
+                                            <!-- General tools such as edit or delete
+                                            <div class="tools">
+                                                <i class="fa fa-edit"></i>
+                                                <i class="fa fa-trash-o"></i>
+                                            </div>
+                                        </li>
+                                      
+                                    </ul>-->
+                                    <table ng-table="tableParams" class="table ng-table-row" show-filter="true">
+                                        <tr ng-repeat="data in $data" class="text-left">
+                                            <td filter="{ Description: 'text'}" >
+                                                {{data.Description}}
+                                            </td>
+                                        </tr>
+                                        <tr ng-show="$data.length === 0">
+                                            <td colspan="3">No records found !</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <!-- /.box-body -->
+                               
+                            </div>
                           
                         </div>
                     </div>

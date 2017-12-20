@@ -5,10 +5,12 @@
         $scope.Compliance = new ComplianceModel();
         $scope.getCurrentRecordId();
         $scope.getUsersLookup();
-        $scope.isShowComplianceGrid = false;
+        $scope.get();
+        $scope.isShowComplianceGrid = true;
+        $scope.isShowComplianceForm=false;
         $scope.isLoading = false;
         $scope.StatusList = ["Open", "Complete", "Cancel"];
-        $scope.DeviationAcceptance = [{ value: "true", text: "Yes" }, { value: "false", text: "No" }];
+        $scope.DeviationAcceptance = $scope.DelayAcceptance = [{ value: true, text: "Yes" }, { value: false, text: "No" }];
     });
 
     $scope.get = function () {
@@ -35,15 +37,14 @@
 
      $scope.save = function () {
         $scope.isLoading = true;
-        if ($scope.frmActivityInfo.$valid) {
-            $scope.Compliance.AreaId = $scope.SelectedArea.ID;
-            $scope.Compliance.ActivityId = $scope.SelectedActivity.ID;
-
+        if ($scope.frmCompliance.$valid) {
             complianceService.save($scope.Compliance).then(function (response) {
                 $scope.isLoading = false
                 $scope.Compliance = new ComplianceModel();
                 $scope.get();
                 toaster.success({ title: "Success", body: "Compliance details saved successfully" });
+                $scope.isShowComplianceGrid = true;
+                $scope.isShowComplianceForm = false;
             }, function (err) {
                 $scope.isLoading = false
                 toaster.error({ title: "Error", body: "Insertion Failed" });
@@ -57,14 +58,17 @@
             $scope.Compliance.DueDate = $filter('date')($scope.Compliance.DueDate, "yyyy-MM-dd");
             $scope.Compliance.CompletionDate = $filter('date')($scope.Compliance.CompletionDate, "yyyy-MM-dd");
             $scope.selectedRow = compliance.ID;
+            $scope.isShowComplianceGrid = false;
+            $scope.isShowComplianceForm = true;
         }, function (err) {
             console.log(err);
         });
     };
 
-    $scope.clear = function () {
+    $scope.cancel = function () {
         $scope.Compliance = new ComplianceModel();
-        $scope.getCurrentRecordId();
+        $scope.isShowComplianceGrid = true;
+        $scope.isShowComplianceForm = false;
     };
 
     $scope.getCurrentRecordId = function () {

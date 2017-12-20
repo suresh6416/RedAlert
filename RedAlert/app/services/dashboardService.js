@@ -18,8 +18,23 @@
             return deferred.promise;
         };
 
+        //Get To Do List 
+        var _getToDoList = function () {
+            var deferred = $q.defer();
+
+            $http.get(serviceBase + '/api/dashboard/GetToDoList').success(function (response) {
+                deferred.resolve(response);
+            }).catch(function (err, status) {
+                deferred.reject(err);
+            });
+
+            return deferred.promise;
+
+        }
+
         return {
             get: _get,
+            getToDoList: _getToDoList
 
         };
     }]);

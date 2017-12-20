@@ -404,6 +404,8 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dist\adminlte.min.js" />
     <Content Include="Scripts\dist\bootstrap.min.js" />
+    <Content Include="Scripts\dist\dashboard.js" />
+    <Content Include="Scripts\dist\dashboard2.js" />
     <Content Include="Scripts\dist\db.js" />
     <Content Include="Scripts\dist\demo.js" />
     <Content Include="Scripts\dist\fastclick.js" />
