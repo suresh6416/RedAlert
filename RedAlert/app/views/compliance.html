@@ -16,79 +16,15 @@
             <div class="col-md-12">
                 <div class="box box-info">
                     <div class="box-body">
-                        <div id="divComplianceGrid" style="overflow-x:auto" ng-if="isShowComplianceGrid">
-                            <table ng-table="tableParams" class="table ng-table-row" show-filter="true">
-                                <tr ng-repeat="data in $data" ng-class="{'selected':data.ID == selectedRow}">
-                                    <td title="'ID'" filter="{ ID: 'number '}" sortable="'ID'" class="text-center">
-                                        {{data.ID}}
-                                    </td>
-                                    <td title="'Area'" filter="{ AreaName: 'text'}" sortable="'AreaName'">
-                                        {{data.AreaName}}
-                                    </td>
-                                    <td title="'Activity'" filter="{ ActivityName: 'text'}" sortable="'ActivityName'">
-                                        {{data.ActivityName}}
-                                    </td>
-                                    <td title="'Description'" filter="{ Description: 'text'}" sortable="'Description'">
-                                        {{data.Description}}
-                                    </td>
-                                    <td title="'DueDate'" filter="{ DueDate: 'text'}" sortable="'DueDate'" class="text-center">
-                                        {{data.DueDate | date:'dd-MMM-yyyy'}}
-                                    </td>
-                                    <td title="'CompletionDate'" filter="{ CompletionDate: 'text'}" sortable="'CompletionDate'" class="text-center">
-                                        {{data.CompletionDate | date:'dd-MMM-yyyy'}}
-                                    </td>
-                                    <td title="'IsDelayed'" filter="{ IsDelayed: 'text'}" sortable="'IsDelayed'">
-                                        {{data.IsDelayed? 'Yes' : 'No'}}
-                                    </td>
-                                    <td title="'ReasonForDelay'" filter="{ ReasonForDelay: 'text'}" sortable="'ReasonForDelay'">
-                                        {{data.ReasonForDelay}}
-                                    </td>
-                                    <td title="'IsDelayAcceptable'" filter="{ IsDelayAcceptable: 'text'}" sortable="'IsDelayAcceptable'">
-                                        {{data.IsDelayAcceptable? 'Yes' : 'No'}}
-                                    </td>
-                                    <td title="'Remarks'" filter="{ Remarks: 'text'}" sortable="'Remarks'">
-                                        {{data.Remarks}}
-                                    </td>
-                                    <td title="'HasDeviation'" filter="{ HasDeviation: 'text'}" sortable="'HasDeviation'">
-                                        {{data.HasDeviation? 'Yes':'No'}}
-                                    </td>
-                                    <td title="'DeviationDesc'" filter="{ DeviationDesc: 'text'}" sortable="'DeviationDesc'">
-                                        {{data.DeviationDesc}}
-                                    </td>
-                                    <td title="'IsDeviationAcceptable'" filter="{ IsDeviationAcceptable: 'text'}" sortable="'IsDeviationAcceptable'">
-                                        {{'1' === data.IsDeviationAcceptable? 'Yes' : 'No'}}
-                                    </td>
-                                    <td title="'Status'" filter="{ Status: 'text'}" sortable="'Status'">
-                                        {{data.Status}}
-                                    </td>
-                                    <td title="'PreRespPerson'" filter="{ PreRespPerson: 'text'}" sortable="'PreRespPerson'">
-                                        {{data.PreRespPerson}}
-                                    </td>
-                                    <td title="'SecRespPerson'" filter="{ SecRespPerson: 'text'}" sortable="'SecRespPerson'">
-                                        {{data.SecRespPerson}}
-                                    </td>
-
-                                    <td data-title="'Action(s)'" class="text-center">
-                                        <button class="btn btn-default btn-sm" uib-tooltip="Edit" ng-click="getById(data)"><span class="fa fa-edit"></span></button>
-                                        <!--<button class="btn btn-danger btn-sm" uib-tooltip="Delete"><span class="fa fa-trash"></span></button>-->
-                                    </td>
-                                </tr>
-                                <tr ng-show="$data.length === 0">
-                                    <td colspan="3">No records found !</td>
-                                </tr>
-                            </table>
-                        </div>
-
-
-                        <div id="divComplianceForm" ng-if="isShowComplianceForm">
+                        <div id="divComplianceForm" ng-if="!isShowComplianceGrid">
                             <form name="frmCompliance">
                                 <div class="form-horizontal">
                                     <div class="form-group">
-                                        <label class="control-label col-sm-3">Activity ID : </label>
+                                        <label class="control-label col-sm-3">ID : </label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" ng-model="Compliance.ActivityId" id="" placeholder="" disabled>
+                                            <input type="text" class="form-control" ng-model="Compliance.ID" id="" placeholder="" disabled>
                                         </div>
-                                    </div>
+                                    </div>                                    
                                     <div class="form-group">
                                         <label class="control-label col-sm-3">Activity : </label>
                                         <div class="col-md-9">
@@ -114,11 +50,10 @@
                                         <!-- <label class="control-label col-sm-3">Job Description :</label><br /> -->
                                         <!-- <span><input type="date" value=""></span> -->
                                     </div>
-                                    
                                     <div class="form-group">
                                         <label class="control-label col-sm-3">Due Date : </label>
                                         <div class="col-md-3">
-                                            <input type="date" name="duedate" class="form-control" ng-model="Compliance.DueDate" value="{{Compliance.DueDate}}" id="" placeholder="" disabled>
+                                            <input type="date" name="duedate" class="form-control" ng-model="Compliance.DueDate" value="{{Compliance.DueDate}}" id="" placeholder="">
                                             <span class="has-error" ng-show="frmCompliance.duedate.$invalid && !frmCompliance.duedate.$pristine">This is required.</span>
 
                                         </div>
@@ -136,9 +71,9 @@
                                                 <option value="">Select</option>
                                             </select>
                                         </div>
-                                        <label class="control-label col-sm-2">Reason for Delay: </label>
-                                        <div class="col-md-4">
-                                            <textarea name="delayreason" rows="3" class="form-control" ng-model="Compliance.ReasonForDelay" id="" placeholder=""></textarea>
+                                        <label class="control-label col-sm-3">Reason for Delay: </label>
+                                        <div class="col-md-3">
+                                            <input type="text" name="delayreason" class="form-control" ng-model="Compliance.ReasonForDelay" id="" placeholder="" disabled>
                                             <span class="has-error" ng-show="frmCompliance.delayreason.$invalid && !frmCompliance.delayreason.$pristine">This is required.</span>
                                         </div>
                                     </div>
@@ -178,7 +113,7 @@
                                             </label>
                                         </div>
                                         <div class="col-md-4">
-                                            <textarea type="text" rows="3" ng-model="Compliance.DeviationDesc" class="form-control" id="" placeholder=""></textarea>
+                                            <input type="text" ng-model="Compliance.DeviationDesc" class="form-control" id="" placeholder="">
                                         </div>
                                     </div>
 
@@ -194,18 +129,78 @@
 
                                     <div class="form-group">
                                         <div class="col-md-offset-3 col-md-9">
-                                           
-                                            <button type="button" class="btn btn-success" ng-click="save()" ng-disabled="frmCompliance.$invalid || isLoading">
+                                            <button type="button" class="btn btn-warning" ng-click="clear()"><i class="fa fa-file-o"></i> Cancel</button>
+                                            <button type="button" class="btn btn-success" ng-click="save()" ng-disabled="frmActivity.$invalid || isLoading">
                                                 <i class="fa fa-floppy-o"></i> Save
                                                 <i class="fa fa-spinner fa-spin" ng-show="isLoading"></i>
-                                            </button>
-                                            <button type="button" ng-click="cancel()" class="btn btn-info"><i class="fa fa-times"></i> Cancel</button>
+                                            </button>                                            
                                         </div>
                                     </div>
                                 </div>
                             </form>
                         </div>
-                        
+                        <div id="divComplianceGrid" style="overflow-x:auto" ng-if="isShowComplianceGrid">
+                            <table ng-table="tableParams" class="table ng-table-row" show-filter="true">
+                                <tr ng-repeat="data in $data" ng-class="{'selected':data.ID == selectedRow}">
+                                    <td title="'ID'" filter="{ ID: 'number '}" sortable="'ID'" class="text-center">
+                                        {{data.ID}}
+                                    </td>
+                                    <td title="'Area'" filter="{ AreaName: 'text'}" sortable="'AreaName'">
+                                        {{data.AreaName}}
+                                    </td>
+                                    <td title="'Activity'" filter="{ ActivityName: 'text'}" sortable="'ActivityName'">
+                                        {{data.ActivityName}}
+                                    </td>
+                                    <td title="'Description'" filter="{ Description: 'text'}" sortable="'Description'">
+                                        {{data.Description}}
+                                    </td>
+                                    <td title="'DueDate'" filter="{ DueDate: 'text'}" sortable="'DueDate'" class="text-center">
+                                        {{data.DueDate | date:'dd-MMM-yyyy'}}
+                                    </td>
+                                    <td title="'CompletionDate'" filter="{ CompletionDate: 'text'}" sortable="'CompletionDate'" class="text-center">
+                                        {{data.CompletionDate | date:'dd-MMM-yyyy'}}
+                                    </td>
+                                    <td title="'IsDelayed'" filter="{ IsDelayed: 'text'}" sortable="'IsDelayed'">
+                                        {{data.IsDelayed}}
+                                    </td>
+                                    <td title="'ReasonForDelay'" filter="{ ReasonForDelay: 'text'}" sortable="'ReasonForDelay'">
+                                        {{data.ReasonForDelay}}
+                                    </td>
+                                    <td title="'IsDelayAcceptable'" filter="{ IsDelayAcceptable: 'text'}" sortable="'IsDelayAcceptable'">
+                                        {{data.IsDelayAcceptable}}
+                                    </td>
+                                    <td title="'Remarks'" filter="{ Remarks: 'text'}" sortable="'Remarks'">
+                                        {{data.Remarks}}
+                                    </td>
+                                    <td title="'HasDeviation'" filter="{ HasDeviation: 'text'}" sortable="'HasDeviation'">
+                                        {{data.HasDeviation}}
+                                    </td>
+                                    <td title="'DeviationDesc'" filter="{ DeviationDesc: 'text'}" sortable="'DeviationDesc'">
+                                        {{data.DeviationDesc}}
+                                    </td>
+                                    <td title="'IsDeviationAcceptable'" filter="{ IsDeviationAcceptable: 'text'}" sortable="'IsDeviationAcceptable'">
+                                        {{data.IsDeviationAcceptable}}
+                                    </td>
+                                    <td title="'Status'" filter="{ Status: 'text'}" sortable="'Status'">
+                                        {{data.Status}}
+                                    </td>
+                                    <td title="'PreRespPerson'" filter="{ PreRespPerson: 'text'}" sortable="'PreRespPerson'">
+                                        {{data.PreRespPerson}}
+                                    </td>
+                                    <td title="'SecRespPerson'" filter="{ SecRespPerson: 'text'}" sortable="'SecRespPerson'">
+                                        {{data.SecRespPerson}}
+                                    </td>
+
+                                    <td data-title="'Action(s)'" class="text-center">
+                                        <button class="btn btn-default btn-sm" uib-tooltip="Edit" ng-click="getById(data)"><span class="fa fa-edit"></span></button>
+                                        <!--<button class="btn btn-danger btn-sm" uib-tooltip="Delete"><span class="fa fa-trash"></span></button>-->
+                                    </td>
+                                </tr>
+                                <tr ng-show="$data.length === 0">
+                                    <td colspan="3">No records found !</td>
+                                </tr>
+                            </table>
+                        </div>
 
                     </div>
                 </div>

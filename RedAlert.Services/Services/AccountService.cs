@@ -1,5 +1,8 @@
-﻿using RedAlert.Entities.Context;
+﻿using RedAlert.Common;
+using RedAlert.Entities.ComplexModels;
+using RedAlert.Entities.Context;
 using RedAlert.Entities.Models;
+using RedAlert.Entities.Repository;
 using RedAlert.Services.Contracts;
 using System;
 using System.Collections.Generic;
@@ -13,9 +16,10 @@ namespace RedAlert.Services.Services
     {
         APIContext _webcontext = new APIContext();
 
-        public List<User> Get()
+        public UserInfo Get(string userName)
         {
-            return _webcontext.Users.ToList();
+            var userInfo = StoredProcedure<UserInfo>.Execute(StoredProcedureName.PRC_GET_USER_INFO, new UserInfoParams { UserName = userName }).FirstOrDefault();
+            return userInfo;
         }
     }
 }

@@ -25,13 +25,13 @@ namespace RedAlert.Controllers
         /// <returns></returns>        
         [HttpGet]
         [Authorize]
-        public OperationResult Get()
+        public OperationResult Get(string user)
         {
             OperationResult result = new OperationResult();
             try
             {
-                result.Data = lAccount.Get();
-                //HttpContext.Current.Session[UIConstants.USER_INFO] = result.Data;
+                result.Data = lAccount.Get(user);
+                HttpContext.Current.Session[UIConstants.USER_INFO] = result.Data;
                 result.Status = OperationStatus.SUCCESS;
             }
             catch (Exception ex)

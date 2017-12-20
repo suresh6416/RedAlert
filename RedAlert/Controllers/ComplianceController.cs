@@ -73,7 +73,7 @@ namespace RedAlert.Controllers
             OperationResult result = new OperationResult();
             try
             {
-                lCompliance.Save(compliance, "");
+                lCompliance.Save(compliance, LoggedInUserName);
                 result.Status = OperationStatus.SUCCESS;
             }
             catch (Exception ex)

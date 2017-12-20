@@ -161,19 +161,19 @@
                                 <span>Dashboard</span>
                             </a>
                         </li>                        
-                        <li ui-sref-active="active treeview menu-open">
+                        <li ui-sref-active="active treeview menu-open" ng-if="userInfo.RoleName === 'HR'">
                             <a ui-sref="home.activityInfo">
                                 <i class="fa fa-files-o"></i>
                                 <span>Actvity Information</span>
                             </a>
                         </li>
-                        <li ui-sref-active="active treeview menu-open">
+                        <li ui-sref-active="active treeview menu-open" ng-if="userInfo.RoleName === 'HR'">
                             <a ui-sref="home.activity">
                                 <i class="fa fa-tasks"></i>
                                 <span>Activity Details</span>
                             </a>
                         </li>
-                        <li ui-sref-active="active treeview menu-open">
+                        <li ui-sref-active="active treeview menu-open" ng-if="userInfo.RoleName === 'HR'">
                             <a ui-sref="home.area">
                                 <i class="fa fa-th"></i> 
                                 <span>Area details</span>

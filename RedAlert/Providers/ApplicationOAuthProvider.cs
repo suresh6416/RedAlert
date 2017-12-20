@@ -44,15 +44,7 @@ namespace RedAlert.Providers
                 {
                     context.SetError("invalid_grant", "The user name or password is incorrect.");
                     return;
-                }
-                else
-                {                    
-                    var userInfo = StoredProcedure<UserInfo>.Execute(StoredProcedureName.PRC_GET_USER_INFO, new UserInfoParams { UserName = context.UserName }).FirstOrDefault();
-                    //if (HttpContext.Current.Session[UIConstants.USER_INFO] == null)
-                    //{
-                    //    HttpContext.Current.Session[UIConstants.USER_INFO] = userInfo;
-                    //}
-                }
+                }                
             }
             
             ClaimsIdentity oAuthIdentity =
