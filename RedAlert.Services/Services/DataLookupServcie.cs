@@ -15,7 +15,7 @@ namespace RedAlert.Services.Services
         {
             var result = (from d in new APIContext().Areas
                           where d.IsActive == true
-                          select new DataLookupModel { ID = d.ID, Name = d.Code }).ToList();
+                          select new DataLookupModel { ID = d.ID, Name = d.Name }).ToList();
             return result;
 
         }
