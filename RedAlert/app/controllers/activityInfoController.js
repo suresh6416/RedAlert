@@ -66,9 +66,9 @@
     $scope.save = function () {
         $scope.isLoading = true;
         if ($scope.frmActivityInfo.$valid) {
-            $scope.ActivityInfo.AreaId = $scope.SelectedArea.ID;
-            $scope.ActivityInfo.ActivityId = $scope.SelectedActivity.ID;
-
+            //$scope.ActivityInfo.AreaId = $scope.ActivityInfo.ID;
+            //$scope.ActivityInfo.ActivityId = $scope.SelectedActivity.ID;
+            
             activityInfoService.save($scope.ActivityInfo).then(function (response) {
                 $scope.isLoading = false
                 $scope.ActivityInfo = new ActivityInfoModel();
@@ -85,7 +85,6 @@
         activityInfoService.getById(activityInfo.ID).then(function (response) {
             
             $scope.ActivityInfo = response.Data;
-            console.log($scope.ActivityInfo);
             $scope.ActivityInfo.PreviousDate = $filter('date')($scope.ActivityInfo.PreviousDate, "yyyy-MM-dd");
             $scope.ActivityInfo.NextDueDate = $filter('date')($scope.ActivityInfo.NextDueDate, "yyyy-MM-dd");
             $scope.ActivityInfo.StartJobDate = $filter('date')($scope.ActivityInfo.StartJobDate, "yyyy-MM-dd");
@@ -98,9 +97,9 @@
 
     function ActivityInfoModel() {
         this.AreaId = '';
-        this.Name = '';
-        this.Description = '';
-        this.ActivityId = "";
+        this.Name = "";
+        this.Description = "";
+        this.ActivityId = '';
         this.Type = "";
         this.Periodicity = "";
         this.PeriodicityType = "";

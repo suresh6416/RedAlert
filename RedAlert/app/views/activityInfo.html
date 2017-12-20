@@ -23,7 +23,7 @@
                                         <label class="control-label col-sm-4">Area :</label>
                                         <div class="col-sm-5">
                                             <select class="form-control" ng-model="ActivityInfo.Name"
-                                                    data-ng-options="a as a.Name for a in AreaLookup | orderBy:'ID' track by a.ID">
+                                                    ng-options="a.Name as a.Name for a in AreaLookup">
                                                 <option value="">Select</option>
                                             </select>
                                             <span class="has-error" ng-show="frmActivityInfo.areacode.$invalid && !frmActivityInfo.areacode.$pristine">This is required.</span>
@@ -33,7 +33,7 @@
                                         <label class="control-label col-sm-4">Activity  :</label>
                                         <div class="col-sm-5">
                                             <select class="form-control" ng-model="ActivityInfo.Description"
-                                                    data-ng-options="m as m.Name for m in ActivityLookup | orderBy:'ID' track by m.ID">
+                                                    data-ng-options="m.Name as m.Name for m in ActivityLookup">
                                                 <option value="">Select</option>
                                             </select>
                                             <span class="has-error" ng-show="frmActivityInfo.activityCode.$invalid && !frmActivityInfo.activityCode.$pristine">This is required.</span>
@@ -87,7 +87,7 @@
                                         <label class="control-label col-sm-4">Next Due Date :</label>
                                         <div class="col-sm-5">
                                             <input type="date" name="NextDueDate" class="form-control" ng-model="ActivityInfo.NextDueDate" value="{{ActivityInfo.NextDueDate}}" placeholder="">
-                                            <span class="has-error" ng-if="ActivityInfo.PreviousDate > ActivityInfo.NextDueDate">previous date must be less than nextdue date</span>
+                                            <span class="has-error" ng-if="ActivityInfo.PreviousDate > ActivityInfo.NextDueDate">PreviousDate must be less than NextDueDate</span>
                                             <span class="has-error" ng-show="frmActivityInfo.NextDueDate.$invalid && !frmActivityInfo.NextDueDate.$pristine">This is required.</span>
                                         </div>
                                     </div>

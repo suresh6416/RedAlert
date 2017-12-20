@@ -36,15 +36,16 @@
 
      $scope.save = function () {
         $scope.isLoading = true;
-        if ($scope.frmActivityInfo.$valid) {
-            $scope.Compliance.AreaId = $scope.SelectedArea.ID;
-            $scope.Compliance.ActivityId = $scope.SelectedActivity.ID;
+        if ($scope.frmCompliance.$valid) {
+            //$scope.Compliance.AreaId = $scope.SelectedArea.ID;
+            //$scope.Compliance.ActivityId = $scope.SelectedActivity.ID;
 
             complianceService.save($scope.Compliance).then(function (response) {
                 $scope.isLoading = false
                 $scope.Compliance = new ComplianceModel();
                 $scope.get();
                 toaster.success({ title: "Success", body: "Compliance details saved successfully" });
+                $scope.isShowComplianceGrid = true;
             }, function (err) {
                 $scope.isLoading = false
                 toaster.error({ title: "Error", body: "Insertion Failed" });
