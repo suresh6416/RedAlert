@@ -140,73 +140,73 @@
                                 </div>
                             </form>
                         </div>
+
+                        <div id="divComplianceGrid" style="overflow-x:auto" ng-if="isShowComplianceGrid">
+                            <table ng-table="tableParams" class="table ng-table-row" show-filter="true">
+                                <tr ng-repeat="data in $data" ng-class="{'selected':data.ID == selectedRow}">
+                                    <td title="'ID'" filter="{ ID: 'number '}" sortable="'ID'" class="text-center">
+                                        {{data.ID}}
+                                    </td>
+                                    <td title="'Area'" filter="{ AreaName: 'text'}" sortable="'AreaName'">
+                                        {{data.AreaName}}
+                                    </td>
+                                    <td title="'Activity'" filter="{ ActivityName: 'text'}" sortable="'ActivityName'">
+                                        {{data.ActivityName}}
+                                    </td>
+                                    <td title="'Description'" filter="{ Description: 'text'}" sortable="'Description'">
+                                        {{data.Description}}
+                                    </td>
+                                    <td title="'DueDate'" filter="{ DueDate: 'text'}" sortable="'DueDate'" class="text-center">
+                                        {{data.DueDate | date:'dd-MMM-yyyy'}}
+                                    </td>
+                                    <td title="'CompletionDate'" filter="{ CompletionDate: 'text'}" sortable="'CompletionDate'" class="text-center">
+                                        {{data.CompletionDate | date:'dd-MMM-yyyy'}}
+                                    </td>
+                                    <td title="'IsDelayed'" filter="{ IsDelayed: 'text'}" sortable="'IsDelayed'">
+                                        {{data.IsDelayed ? 'Yes' : 'No'}}
+                                    </td>
+                                    <td title="'ReasonForDelay'" filter="{ ReasonForDelay: 'text'}" sortable="'ReasonForDelay'">
+                                        {{data.ReasonForDelay}}
+                                    </td>
+                                    <td title="'IsDelayAcceptable'" filter="{ IsDelayAcceptable: 'text'}" sortable="'IsDelayAcceptable'">
+                                        {{data.IsDelayAcceptable? 'Yes' : 'No'}}
+                                    </td>
+                                    <td title="'Remarks'" filter="{ Remarks: 'text'}" sortable="'Remarks'">
+                                        {{data.Remarks}}
+                                    </td>
+                                    <td title="'HasDeviation'" filter="{ HasDeviation: 'text'}" sortable="'HasDeviation'">
+                                        {{data.HasDeviation? 'Yes' : 'No'}}
+                                    </td>
+                                    <td title="'DeviationDesc'" filter="{ DeviationDesc: 'text'}" sortable="'DeviationDesc'">
+                                        {{data.DeviationDesc}}
+                                    </td>
+                                    <td title="'IsDeviationAcceptable'" filter="{ IsDeviationAcceptable: 'text'}" sortable="'IsDeviationAcceptable'">
+                                        {{data.IsDeviationAcceptable == 'true' }}
+                                    </td>
+                                    <td title="'Status'" filter="{ Status: 'text'}" sortable="'Status'">
+                                        {{data.Status}}
+                                    </td>
+                                    <td title="'PreRespPerson'" filter="{ PreRespPerson: 'text'}" sortable="'PreRespPerson'">
+                                        {{data.PreRespPerson}}
+                                    </td>
+                                    <td title="'SecRespPerson'" filter="{ SecRespPerson: 'text'}" sortable="'SecRespPerson'">
+                                        {{data.SecRespPerson}}
+                                    </td>
+
+                                    <td data-title="'Action(s)'" class="text-center">
+                                        <button class="btn btn-default btn-sm" uib-tooltip="Edit" ng-click="getById(data)"><span class="fa fa-edit"></span></button>
+                                        <!--<button class="btn btn-danger btn-sm" uib-tooltip="Delete"><span class="fa fa-trash"></span></button>-->
+                                    </td>
+                                </tr>
+                                <tr ng-show="$data.length === 0">
+                                    <td colspan="3">No records found !</td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="divComplianceGrid" style="overflow-x:auto" ng-if="isShowComplianceGrid">
-            <table ng-table="tableParams" class="table ng-table-row" show-filter="true">
-                <tr ng-repeat="data in $data" ng-class="{'selected':data.ID == selectedRow}">
-                    <td title="'ID'" filter="{ ID: 'number '}" sortable="'ID'" class="text-center">
-                        {{data.ID}}
-                    </td>
-                    <td title="'Area'" filter="{ AreaName: 'text'}" sortable="'AreaName'">
-                        {{data.AreaName}}
-                    </td>
-                    <td title="'Activity'" filter="{ ActivityName: 'text'}" sortable="'ActivityName'">
-                        {{data.ActivityName}}
-                    </td>
-                    <td title="'Description'" filter="{ Description: 'text'}" sortable="'Description'">
-                        {{data.Description}}
-                    </td>
-                    <td title="'DueDate'" filter="{ DueDate: 'text'}" sortable="'DueDate'" class="text-center">
-                        {{data.DueDate | date:'dd-MMM-yyyy'}}
-                    </td>
-                    <td title="'CompletionDate'" filter="{ CompletionDate: 'text'}" sortable="'CompletionDate'" class="text-center">
-                        {{data.CompletionDate | date:'dd-MMM-yyyy'}}
-                    </td>
-                    <td title="'IsDelayed'" filter="{ IsDelayed: 'text'}" sortable="'IsDelayed'">
-                        {{data.IsDelayed}}
-                    </td>
-                    <td title="'ReasonForDelay'" filter="{ ReasonForDelay: 'text'}" sortable="'ReasonForDelay'">
-                        {{data.ReasonForDelay}}
-                    </td>
-                    <td title="'IsDelayAcceptable'" filter="{ IsDelayAcceptable: 'text'}" sortable="'IsDelayAcceptable'">
-                        {{data.IsDelayAcceptable}}
-                    </td>
-                    <td title="'Remarks'" filter="{ Remarks: 'text'}" sortable="'Remarks'">
-                        {{data.Remarks}}
-                    </td>
-                    <td title="'HasDeviation'" filter="{ HasDeviation: 'text'}" sortable="'HasDeviation'">
-                        {{data.HasDeviation}}
-                    </td>
-                    <td title="'DeviationDesc'" filter="{ DeviationDesc: 'text'}" sortable="'DeviationDesc'">
-                        {{data.DeviationDesc}}
-                    </td>
-                    <td title="'IsDeviationAcceptable'" filter="{ IsDeviationAcceptable: 'text'}" sortable="'IsDeviationAcceptable'">
-                        {{data.IsDeviationAcceptable}}
-                    </td>
-                    <td title="'Status'" filter="{ Status: 'text'}" sortable="'Status'">
-                        {{data.Status}}
-                    </td>
-                    <td title="'PreRespPerson'" filter="{ PreRespPerson: 'text'}" sortable="'PreRespPerson'">
-                        {{data.PreRespPerson}}
-                    </td>
-                    <td title="'SecRespPerson'" filter="{ SecRespPerson: 'text'}" sortable="'SecRespPerson'">
-                        {{data.SecRespPerson}}
-                    </td>
-
-                    <td data-title="'Action(s)'" class="text-center">
-                        <button class="btn btn-default btn-sm" uib-tooltip="Edit" ng-click="getById(data)"><span class="fa fa-edit"></span></button>
-                        <!--<button class="btn btn-danger btn-sm" uib-tooltip="Delete"><span class="fa fa-trash"></span></button>-->
-                    </td>
-                </tr>
-                <tr ng-show="$data.length === 0">
-                    <td colspan="3">No records found !</td>
-                </tr>
-            </table>
-        </div>
-
 
     </section>
 </div>
