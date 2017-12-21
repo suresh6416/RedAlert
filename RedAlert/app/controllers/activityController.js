@@ -5,6 +5,7 @@
         $scope.getCurrentRecordId();
         $scope.isLoading = false
         $scope.isShowActivities = false;
+        $scope.isHighlightSelectedRow = false;
     });
 
    $scope.get = function () {
@@ -22,6 +23,7 @@
         $scope.isLoading = true;
         if ($scope.frmActivity.$valid) {
             activityService.save($scope.Activity).then(function (response) {
+                $scope.isHighlightSelectedRow = false;
                 $scope.isLoading = false
                 $scope.Activity.Description = '';
                 $scope.getCurrentRecordId();
@@ -38,12 +40,14 @@
         activityService.getById(activity.ID).then(function (response) {            
             $scope.Activity = response.Data;
             $scope.selectedRow = activity.ID;
+            $scope.isHighlightSelectedRow = true;
         }, function (err) {
             console.log(err);
         });
     };
 
     $scope.clear = function () {
+        $scope.isHighlightSelectedRow = false;
         $scope.Activity = new ActivityModel();
         $scope.getCurrentRecordId();
     };

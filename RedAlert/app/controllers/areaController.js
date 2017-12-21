@@ -5,6 +5,7 @@
         $scope.getCurrentRecordId();
         $scope.isLoading = false
         $scope.isShowAreaGrid = false;
+        $scope.isHighlightSelectedRow = false;
     });
 
 
@@ -27,6 +28,7 @@
                 $scope.Area.Name = '';
                 $scope.Area.Code = '';
                 $scope.getCurrentRecordId();
+                $scope.isHighlightSelectedRow = false;
                 $scope.get();
                 toaster.success({ title: "Success", body: "Area saved successfully" });
             }, function (err) {
@@ -39,6 +41,7 @@
     $scope.getById = function (area) {
         areaService.getById(area.ID).then(function (response) {
             $scope.Area = response.Data;
+            $scope.isHighlightSelectedRow = true;
             $scope.selectedRow = area.ID;
         }, function (err) {
             console.log(err);
@@ -54,6 +57,7 @@
     };
 
     $scope.clear = function () {
+        $scope.isHighlightSelectedRow = false;
         $scope.Area = new AreaModel();
         $scope.getCurrentRecordId();
     };

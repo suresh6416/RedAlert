@@ -1,13 +1,16 @@
-﻿angular.module('RedAlertApp').controller('activityInfoController', ['$rootScope', '$scope', '$state', 'toaster','NgTableParams','$filter', 'activityInfoService', 'dataLookupService', function ($rootScope, $scope, $state, $toaster, NgTableParams,$filter, activityInfoService, dataLookupService) {
+﻿angular.module('RedAlertApp').controller('activityInfoController', ['$rootScope', '$scope', '$state', 'toaster','NgTableParams','$filter', 'activityInfoService', 'dataLookupService', function ($rootScope, $scope, $state, toaster, NgTableParams,$filter, activityInfoService, dataLookupService) {
     $scope.$on('$viewContentLoaded', function () {
         $scope.ActivitiesInfo = [];
         $scope.ActivityLookup = [];
         $scope.AreaLookup = [];
+        $scope.UsersList = [];
         $scope.ActivityInfo = new ActivityInfoModel();
         $scope.isShowActivityInfoGrid = false;
         $scope.getAreaLookup();
         $scope.getActivityLookup();
+        $scope.getUsersLookup();
         $scope.isLoading = false;
+         $scope.isHighlightSelectedRow = false;
         $scope.Status = [{
             Id: 1,
             StatusDesc: "In Progress"
@@ -36,7 +39,8 @@
     //Get Area Lookup
     $scope.getAreaLookup = function () {        
         dataLookupService.getAreaLookup().then(function (response) {
-            $scope.AreaLookup = response.Data;           
+            $scope.AreaLookup = response.Data;
+            console.log($scope.AreaLookup)
         }, function (err) {
             console.log(err);
         });
@@ -63,16 +67,26 @@
         });
     };
 
+     //Get Users Lookup
+    $scope.getUsersLookup = function () {
+        dataLookupService.getUsersLookup().then(function (response) {
+            $scope.UsersList = response.Data;
+        }, function (err) {
+            console.log(err);
+        });
+    };
+
     $scope.save = function () {
         $scope.isLoading = true;
+        $scope.ActivityInfo.AreaId = $scope.SelectedArea;
+        $scope.ActivityInfo.ActivityId = $scope.SelectedActivity;
+       
         if ($scope.frmActivityInfo.$valid) {
-            //$scope.ActivityInfo.AreaId = $scope.ActivityInfo.ID;
-            //$scope.ActivityInfo.ActivityId = $scope.SelectedActivity.ID;
-            
             activityInfoService.save($scope.ActivityInfo).then(function (response) {
                 $scope.isLoading = false
-                $scope.ActivityInfo = new ActivityInfoModel();
+                $scope.clear();
                 $scope.get();
+                 $scope.isHighlightSelectedRow = false;
                 toaster.success({ title: "Success", body: "Activity information saved successfully" });
             }, function (err) {
                 $scope.isLoading = false
@@ -88,12 +102,21 @@
             $scope.ActivityInfo.PreviousDate = $filter('date')($scope.ActivityInfo.PreviousDate, "yyyy-MM-dd");
             $scope.ActivityInfo.NextDueDate = $filter('date')($scope.ActivityInfo.NextDueDate, "yyyy-MM-dd");
             $scope.ActivityInfo.StartJobDate = $filter('date')($scope.ActivityInfo.StartJobDate, "yyyy-MM-dd");
+            $scope.SelectedArea = $scope.ActivityInfo.AreaId;
+            $scope.SelectedActivity = $scope.ActivityInfo.ActivityId;
+             $scope.isHighlightSelectedRow = true;
             $scope.selectedRow = activityInfo.ID;            
         }, function (err) {
             console.log(err);
         });
     };
 
+    $scope.clear = function () {
+         $scope.isHighlightSelectedRow = false;
+        $scope.ActivityInfo = new ActivityInfoModel();
+        $scope.SelectedArea = "";
+        $scope.SelectedActivity = "";
+    }
 
     function ActivityInfoModel() {
         this.AreaId = '';

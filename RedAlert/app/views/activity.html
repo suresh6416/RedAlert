@@ -48,7 +48,7 @@
                         
                         <div id="divActivityGrid" ng-if="isShowActivities">
                             <table ng-table="tableParams" class="table ng-table-row" show-filter="true">
-                                <tr ng-repeat="data in $data" ng-class="{'selected':data.ID == selectedRow}">
+                                <tr ng-repeat="data in $data" ng-class="{'selected':(data.ID == selectedRow && isHighlightSelectedRow)}">
                                     <td title="'ID'" filter="{ ID: 'number'}" sortable="'ID'" class="text-center">
                                         {{data.ID}}
                                     </td>

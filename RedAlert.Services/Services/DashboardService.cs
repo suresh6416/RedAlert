@@ -12,14 +12,14 @@ using RedAlert.Services.Contracts;
 
 namespace RedAlert.Services.Services
 {
-
+  
     public class DashboardService : IDashboardService
     {
         APIContext _webcontext = new APIContext();
 
-        public DashboardResult Get()
+        public DashboardResult Get(string loggedInUserName)
         {
-            var activitiesProgress = StoredProcedure<DashboardResult>.Execute(StoredProcedureName.PRC_GET_ACTIVITIES_PROGRESS, new DashboardResultParams {UserName="ramesh" }).FirstOrDefault();
+            var activitiesProgress = StoredProcedure<DashboardResult>.Execute(StoredProcedureName.PRC_GET_ACTIVITIES_PROGRESS, new DashboardResultParams {UserName=loggedInUserName }).FirstOrDefault();
             return activitiesProgress;
         }
 
