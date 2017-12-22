@@ -15,7 +15,7 @@
     };
 
     $scope.getToDoList = function () { 
-        dashboardService.getToDoList().then(function(response){
+        dashboardService.getToDoList().then(function (response) {
             $scope.ToDoList = response.Data;
              $scope.tableParams = new NgTableParams({}, {
                  dataset: $scope.ToDoList

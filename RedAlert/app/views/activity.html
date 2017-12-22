@@ -5,7 +5,7 @@
             Activity Details
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a ui-sref="home.dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
             <li class="active">Activity Details</li>
         </ol>
 
@@ -34,12 +34,12 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-offset-3 col-md-9">
-                                            <button type="button" class="btn btn-warning" ng-click="clear()"><i class="fa fa-file-o"></i> Clear</button>
+                                            <button type="button" class="btn btn-danger" ng-click="clear()"><i class="fa fa-times"></i> Clear</button>
                                             <button type="button" class="btn btn-success" ng-click="save()" ng-disabled="frmActivity.$invalid || isLoading">
                                                 <i class="fa fa-floppy-o"></i> Save
                                                 <i class="fa fa-spinner fa-spin" ng-show="isLoading"></i>
                                             </button>
-                                            <button type="button" ng-click="get();isShowActivities=true" class="btn btn-info"><i class="fa fa-times"></i> View</button>
+                                            <button type="button" ng-click="get();isShowActivities=true" class="btn btn-warning"><i class="fa fa-file-o"></i> View</button>
                                         </div>
                                     </div>
                                 </div>

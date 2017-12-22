@@ -5,7 +5,7 @@
             Actvity Information
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a ui-sref="home.dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
             <li class="active">Actvity Information</li>
         </ol>
 
@@ -26,7 +26,7 @@
                                                     ng-options="a.ID as a.Name for a in AreaLookup" required>
                                                 <option value="">--Select--</option>
                                             </select>
-                                          
+
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -36,7 +36,7 @@
                                                     data-ng-options="m.ID as m.Name for m in ActivityLookup" required>
                                                 <option value="">--Select--</option>
                                             </select>
-                                           
+
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -45,7 +45,7 @@
                                             <select class="form-control" ng-model="ActivityInfo.Type" ng-options="o as o for o in TypeList" required>
                                                 <option value="">--Select--</option>
                                             </select>
-                                          
+
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -87,7 +87,7 @@
                                         <label class="control-label col-sm-4">Next Due Date :</label>
                                         <div class="col-sm-5">
                                             <input type="date" name="NextDueDate" class="form-control" ng-model="ActivityInfo.NextDueDate" value="{{ActivityInfo.NextDueDate}}" ng-model-options="{timezone: 'utc'}" placeholder="" required>
-                                            
+
                                             <span class="has-error" ng-if="ActivityInfo.PreviousDate > ActivityInfo.NextDueDate">PreviousDate must be less than NextDueDate</span>
                                             <span class="has-error" ng-show="frmActivityInfo.NextDueDate.$invalid && !frmActivityInfo.NextDueDate.$pristine">This is required.</span>
                                         </div>
@@ -95,8 +95,8 @@
                                     <div class="form-group">
                                         <label class="control-label col-sm-4">Start Job Date :</label>
                                         <div class="col-sm-5">
-                                            <input type="date" name="StartJobDate" class="form-control" ng-model="ActivityInfo.StartJobDate"  value="{{ActivityInfo.StartJobDate}}" ng-model-options="{timezone: 'utc'}" placeholder="" required>
-                                            <span class="has-error" ng-if="ActivityInfo.NextDueDate < ActivityInfo.StartJobDate" >NextDueDate date must be greater than StartJobDate</span>
+                                            <input type="date" name="StartJobDate" class="form-control" ng-model="ActivityInfo.StartJobDate" value="{{ActivityInfo.StartJobDate}}" ng-model-options="{timezone: 'utc'}" placeholder="" required>
+                                            <span class="has-error" ng-if="ActivityInfo.NextDueDate < ActivityInfo.StartJobDate">NextDueDate date must be greater than StartJobDate</span>
                                             <span class="has-error" ng-if="ActivityInfo.PreviousDate > ActivityInfo.StartJobDate">NextDueDate date must be greater than StartJobDate</span>
                                             <span class="has-error" ng-show="frmActivityInfo.StartJobDate.$invalid && !frmActivityInfo.StartJobDate.$pristine">This is required.</span>
                                         </div>
@@ -107,9 +107,9 @@
                                             <select class="form-control" ng-model="ActivityInfo.PreRespPerson" name="PreRespPerson" ng-options="u.Name as u.Name for u in UsersList" required>
                                                 <option value="">--Select--</option>
                                             </select>
-                                              
 
-</div>
+
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-sm-4">Sec.Resp.person :</label>
@@ -117,9 +117,9 @@
                                             <select class="form-control" ng-model="ActivityInfo.SecRespPerson" name="SecRespPerson" ng-options="u.Name as u.Name for u in UsersList" required>
                                                 <option value="">--Select--</option>
                                             </select>
-                                              
 
-</div>
+
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-sm-4">Status:</label>
@@ -132,12 +132,12 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-offset-4 col-md-8">
-                                            <button type="button" class="btn btn-warning" ng-click="clear()"><i class="fa fa-file-o"></i> Clear</button>
+                                            <button type="button" class="btn btn-danger" ng-click="clear()"><i class="fa fa-times"></i> Clear</button>
                                             <button type="button" class="btn btn-success" ng-click="save()" ng-disabled="frmActivityInfo.$invalid || isLoading">
                                                 <i class="fa fa-floppy-o"></i> Save
                                                 <i class="fa fa-spinner fa-spin" ng-show="isLoading"></i>
                                             </button>
-                                            <button type="button" ng-click="get();isShowActivityInfoGrid=true" class="btn btn-info"><i class="fa fa-times"></i> View</button>
+                                            <button type="button" ng-click="get();isShowActivityInfoGrid=true" class="btn btn-warning"><i class="fa fa-file-o"></i> View</button>
                                         </div>
                                     </div>
 
@@ -150,10 +150,10 @@
                                     <td title="'ID'" filter="{ ID: 'number '}" sortable="'ID'" class="text-center">
                                         {{data.ID}}
                                     </td>
-                                    
+
                                     <td title="'Area'" filter="{ Area: 'text'}" sortable="'Area'">
                                         {{data.Name}}
-                                     </td>
+                                    </td>
                                     <td title="'Activity'" filter="{ Activity: 'text'}" sortable="'Activity'">
                                         {{data.Description}}
                                     </td>
@@ -163,11 +163,11 @@
                                     <td title="'Periodicity'" filter="{ Periodicity: 'text'}" sortable="'Periodicity'">
                                         {{data.Periodicity+ " " +data.PeriodicityType}}
                                     </td>
-                                    
+
                                     <td title="'AdvanceAlertBeforeDueDate'" filter="{ AdvanceAlertBeforeDueDate: 'number'}" sortable="'AdvanceAlertBeforeDueDate'">
                                         {{data.AdvnaceAlert+" "+data.AdvnaceAlertType}}
                                     </td>
-                                    
+
                                     <td title="'PreviousDate'" filter="{ PreviousDate: 'text'}" sortable="'PreviousDate'">
                                         {{data.PreviousDate | date:'dd-MMM-yyyy'}}
                                     </td>
@@ -188,14 +188,14 @@
                                     </td>
                                     <td data-title="'Action(s)'" class="text-center">
                                         <button class="btn btn-default btn-sm" uib-tooltip="Edit" ng-click="getById(data)"><span class="fa fa-edit"></span></button>
-                                     </td>
-                                   </tr>
-                                </table>
-                            </div>
-
-
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
+
+
                     </div>
+                </div>
             </div>
         </div>
     </section>

@@ -12,6 +12,7 @@ namespace RedAlert.Entities.ComplexModels
         public string Description { get; set; }
         public int ID { get; set; }
         public int ActivityId { get; set; }
+        public DateTime CreatedOn { get; set; }
     }
     public class ToDoListParams:StoredProcedureParams
     {
