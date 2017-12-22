@@ -47,7 +47,7 @@ namespace RedAlert.Controllers
             OperationResult result = new OperationResult();
             try
             {
-                result.Data = lDashboard.GetToDoList();
+                result.Data = lDashboard.GetToDoList(LoggedInUserName);
                 result.Status = OperationStatus.SUCCESS;
             }
             catch (Exception ex)

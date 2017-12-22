@@ -6,9 +6,10 @@
         $scope.getCurrentRecordId();
         $scope.getUsersLookup();
         $scope.isShowComplianceGrid = true;
+        $scope.isHighlightSelectedRow = false;
         $scope.isLoading = false;
         $scope.StatusList = ["Open", "Complete", "Cancel"];
-        $scope.DeviationAcceptance = [{ value: "true", text: "Yes" }, { value: "false", text: "No" }];
+        $scope.DeviationAcceptance = [{ value: true, text: "Yes" }, { value: false, text: "No" }];
         $scope.get();
     });
 
@@ -46,6 +47,7 @@
                 $scope.get();
                 toaster.success({ title: "Success", body: "Compliance details saved successfully" });
                 $scope.isShowComplianceGrid = true;
+                $scope.isHighlightSelectedRow = false;
             }, function (err) {
                 $scope.isLoading = false
                 toaster.error({ title: "Error", body: "Insertion Failed" });
@@ -60,6 +62,7 @@
             $scope.Compliance.CompletionDate = $filter('date')($scope.Compliance.CompletionDate, "yyyy-MM-dd");
             $scope.selectedRow = compliance.ID;
             $scope.isShowComplianceGrid = false;
+            $scope.isHighlightSelectedRow = true;
         }, function (err) {
             console.log(err);
         });
@@ -68,6 +71,7 @@
     $scope.clear = function () {
         $scope.Compliance = new ComplianceModel();
         $scope.isShowComplianceGrid = true;
+        $scope.isHighlightSelectedRow = false;
     };
 
     $scope.getCurrentRecordId = function () {

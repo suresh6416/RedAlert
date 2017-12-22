@@ -21,8 +21,9 @@
         //Get To Do List 
         var _getToDoList = function () {
             var deferred = $q.defer();
-
+            console.log("In Dashboard service1");
             $http.get(serviceBase + '/api/dashboard/GetToDoList').success(function (response) {
+               console.log("In Dashboard service2");
                 deferred.resolve(response);
             }).catch(function (err, status) {
                 deferred.reject(err);

@@ -73,7 +73,7 @@
                                         </div>
                                         <label class="control-label col-sm-2">Reason for Delay: </label>
                                         <div class="col-md-4">
-                                            <textarea class="form-control" name="delayreason" ng-model="Compliance.delayreason" rows="4" id="comment"></textarea>
+                                            <textarea class="form-control" name="delayreason" ng-model="Compliance.ReasonForDelay" rows="4" id="comment"></textarea>
                                             <span class="has-error" ng-show="frmCompliance.delayreason.$invalid && !frmCompliance.delayreason.$pristine">This is required.</span>
                                         </div>
                                     </div>
@@ -93,14 +93,14 @@
                                     <div class="form-group">
                                         <label class="control-label col-sm-3">Pre.Resp.Person: </label>
                                         <div class="col-md-3">
-                                            <select class="form-control" name="PreRespPerson" ng-model="Compliance.PreRespPerson" ng-options="u as u.Name for u in UsersList">
+                                            <select class="form-control" name="PreRespPerson" ng-model="Compliance.PreRespPerson" ng-options="u.Name as u.Name for u in UsersList">
                                                 <option value="">Select</option>
                                             </select>
                                             <span class="has-error" ng-show="frmCompliance.PreRespPerson.$invalid && !frmCompliance.PreRespPerson.$pristine">This is required.</span>
                                         </div>
                                         <label class="control-label col-sm-2">Sec.Resp.Person :</label>
                                         <div class="col-md-4">
-                                            <select class="form-control" name="SecRespPerson" ng-model="Compliance.SecRespPerson" ng-options="u as u.Name for u in UsersList">
+                                            <select class="form-control" name="SecRespPerson" ng-model="Compliance.SecRespPerson" ng-options="u.Name as u.Name for u in UsersList">
                                                 <option value="">Select</option>
                                             </select>
                                             <span class="has-error" ng-show="frmCompliance.SecRespPerson.$invalid && !frmCompliance.SecRespPerson.$pristine">This is required.</span>
@@ -143,7 +143,7 @@
 
                         <div id="divComplianceGrid" style="overflow-x:auto" ng-if="isShowComplianceGrid">
                             <table ng-table="tableParams" class="table ng-table-row" show-filter="true">
-                                <tr ng-repeat="data in $data" ng-class="{'selected':data.ID == selectedRow}">
+                                <tr ng-repeat="data in $data" ng-class="{'selected': (data.ID == selectedRow && isHighlightSelectedRow)}">
                                     <td title="'ID'" filter="{ ID: 'number '}" sortable="'ID'" class="text-center">
                                         {{data.ID}}
                                     </td>

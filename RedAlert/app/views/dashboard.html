@@ -83,18 +83,45 @@
                                    
                                 </div>
                                 <!-- /.box-header -->
-                                <div class="box-body">
-                                    <table ng-table="tableParams" class="table ng-table-row" show-filter="true">
-                                        <tr ng-repeat="data in $data" class="text-left">
-                                            <td filter="{ Description: 'text'}" >
-                                                {{data.Description}}
-                                            </td>
-                                        </tr>
-                                        <tr ng-show="$data.length === 0">
-                                            <td colspan="3">No records found !</td>
-                                        </tr>
-                                    </table>
-                                </div>
+                                <div class="box-body" style="overflow-y:auto">
+                                    <ul class="todo-list" ng-repeat="list in ToDoList" style="margin:2px">
+                                        <li>
+                                            <!-- drag handle -->
+                                            <span class="handle">
+                                                <i class="fa fa-ellipsis-v"></i>
+                                                <i class="fa fa-ellipsis-v"></i>
+                                            </span>
+                                            <!-- checkbox -->
+                                            <input type="checkbox" value="">
+                                            <!-- todo text -->
+                                            <span class="text">{{list.Description}}</span>
+                                            <!-- Emphasis label -->
+                                            <small class="label" ng-class="{'label-warning':!($index%2),'label-danger':($index%2),'label-info':!($index%3),'label-success':!($index%5)}" ><i class="fa fa-clock-o"></i>{{list.CreaedOn}}</small>
+                                            <!-- General tools such as edit or delete-->
+                                            <div class="tools">
+                                                <i class="fa fa-edit"></i>
+                                                <i class="fa fa-trash-o"></i>
+                                            </div>
+                                        </li>
+                                        </ul>
+                                        <!--<table ng-table="tableParams" class="todo-list" show-filter="true">
+                                            <tr ng-repeat="data in $data" class="text-left">
+                                                <td>
+                                                     drag handle 
+                                                    <span class="handle">
+                                                        <i class="fa fa-ellipsis-v"></i>
+                                                        <i class="fa fa-ellipsis-v"></i>
+                                                    </span>
+                                                </td>
+                                                <td filter="{ Description: 'text'}">
+                                                    {{data.Description}}
+                                                </td>
+                                            </tr>
+                                            <tr ng-show="$data.length === 0">
+                                                <td colspan="3">No records found !</td>
+                                            </tr>
+                                        </table>-->
+</div>
                                 <!-- /.box-body -->
                                
                             </div>
