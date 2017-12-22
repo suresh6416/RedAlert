@@ -128,7 +128,8 @@
         this.PeriodicityType = "";
         this.AdvnaceAlert = "";
         this.AdvnaceAlertType = "";
-        this.NextDueDate = "";
+        this.PreviousDate = "";
+        this.NextDueDate ="";
         this.StartJobDate = "";
         this.PreRespPerson = "";
         this.SecRespPerson = "";

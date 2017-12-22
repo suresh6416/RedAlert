@@ -23,9 +23,9 @@ namespace RedAlert.Services.Services
             return activitiesProgress;
         }
 
-        public List<ToDoListResult> GetToDoList()
+        public List<ToDoListResult> GetToDoList(string loggedInUserName)
         {
-            var toDoList = StoredProcedure<ToDoListResult>.Execute(StoredProcedureName.PRC_GET_TODO_LIST, new ToDoListParams { UserName = "sankar" }).ToList();
+            var toDoList = StoredProcedure<ToDoListResult>.Execute(StoredProcedureName.PRC_GET_TODO_LIST, new ToDoListParams { UserName = loggedInUserName }).ToList();
             return toDoList;
         }
     }
