@@ -8,7 +8,6 @@
         //Get Area Lookup
         var _getAreaLookup = function () {
             var deferred = $q.defer();
-            console.log("In data look up service");
             $http.get(serviceBase + '/api/DataLookup/AreaLookup').success(function (response) {
                 deferred.resolve(response);
             }).error(function (err, status) {
@@ -34,7 +33,6 @@
         //Get Users Lookup
         var _getUsersLookup = function () {
             var deferred = $q.defer();
-            console.log("In lookup service");
             $http.get(serviceBase + '/api/DataLookup/UsersLookup').success(function (response) {
                 deferred.resolve(response);
             }).error(function (err, status) {

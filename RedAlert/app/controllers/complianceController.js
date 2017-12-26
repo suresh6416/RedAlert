@@ -1,4 +1,4 @@
-﻿angular.module('RedAlertApp').controller('complianceController', ['$rootScope', '$scope', '$state', 'complianceService','dataLookupService', 'toaster', 'NgTableParams','$filter', function ($rootScope, $scope, $state, complianceService,dataLookupService, toaster, NgTableParams,$filter) {
+﻿angular.module('RedAlertApp').controller('complianceController', ['$rootScope', '$scope', '$state', 'complianceService','dataLookupService', 'toaster', 'NgTableParams', function ($rootScope, $scope, $state, complianceService,dataLookupService, toaster, NgTableParams) {
     $scope.$on('$viewContentLoaded', function () {
         $scope.Compliances = [];
         $scope.UsersList = [];
@@ -36,7 +36,7 @@
     };
 
      $scope.save = function () {
-        $scope.isLoading = true;
+         $scope.isLoading = true;
         if ($scope.frmCompliance.$valid) {
             //$scope.Compliance.AreaId = $scope.SelectedArea.ID;
             //$scope.Compliance.ActivityId = $scope.SelectedActivity.ID;
@@ -58,8 +58,8 @@
     $scope.getById = function (compliance) {
         complianceService.getById(compliance.ID).then(function (response) {
             $scope.Compliance = response.Data;
-            $scope.Compliance.DueDate = $filter('date')($scope.Compliance.DueDate, "yyyy-MM-dd");
-            $scope.Compliance.CompletionDate = $filter('date')($scope.Compliance.CompletionDate, "yyyy-MM-dd");
+            $scope.Compliance.DueDate = new Date($scope.Compliance.DueDate);
+            $scope.Compliance.CompletionDate = new Date($scope.Compliance.CompletionDate);
             $scope.selectedRow = compliance.ID;
             $scope.isShowComplianceGrid = false;
             $scope.isHighlightSelectedRow = true;

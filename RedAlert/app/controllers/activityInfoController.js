@@ -1,4 +1,4 @@
-﻿angular.module('RedAlertApp').controller('activityInfoController', ['$rootScope', '$scope', '$state', 'toaster','NgTableParams','$filter', 'activityInfoService', 'dataLookupService', function ($rootScope, $scope, $state, toaster, NgTableParams,$filter, activityInfoService, dataLookupService) {
+﻿angular.module('RedAlertApp').controller('activityInfoController', ['$rootScope', '$scope', '$state', 'toaster','NgTableParams', 'activityInfoService', 'dataLookupService', function ($rootScope, $scope, $state, toaster, NgTableParams, activityInfoService, dataLookupService) {
     $scope.$on('$viewContentLoaded', function () {
         $scope.ActivitiesInfo = [];
         $scope.ActivityLookup = [];
@@ -99,9 +99,9 @@
         activityInfoService.getById(activityInfo.ID).then(function (response) {
             
             $scope.ActivityInfo = response.Data;
-            $scope.ActivityInfo.PreviousDate = $filter('date')($scope.ActivityInfo.PreviousDate, "yyyy-MM-dd");
-            $scope.ActivityInfo.NextDueDate = $filter('date')($scope.ActivityInfo.NextDueDate, "yyyy-MM-dd");
-            $scope.ActivityInfo.StartJobDate = $filter('date')($scope.ActivityInfo.StartJobDate, "yyyy-MM-dd");
+             $scope.ActivityInfo.PreviousDate = new Date($scope.ActivityInfo.PreviousDate);
+             $scope.ActivityInfo.NextDueDate = new Date($scope.ActivityInfo.NextDueDate);
+            $scope.ActivityInfo.StartJobDate = new Date($scope.ActivityInfo.StartJobDate);
             $scope.SelectedArea = $scope.ActivityInfo.AreaId;
             $scope.SelectedActivity = $scope.ActivityInfo.ActivityId;
              $scope.isHighlightSelectedRow = true;
