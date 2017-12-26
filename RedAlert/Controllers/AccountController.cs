@@ -11,6 +11,7 @@ using System.Web.Http;
 namespace RedAlert.Controllers
 {
     [RoutePrefix("api/Account")]
+    [Authorize]
     public class AccountController : BaseController
     {
         IAccountService lAccount;
@@ -24,8 +25,7 @@ namespace RedAlert.Controllers
         /// </summary>
         /// <returns></returns>        
         [HttpGet]
-        [Authorize]
-        public OperationResult Get(string user)
+        public OperationResult GetUserInfo(string user)
         {
             OperationResult result = new OperationResult();
             try

@@ -6,10 +6,10 @@
         var serviceBase = redAlertConstants.apiServiceBaseUri;
 
         //Get
-        var _get = function () {
+        var _get = function (user) {
             var deferred = $q.defer();
 
-            $http.get(serviceBase + '/api/dashboard').success(function (response) {
+            $http.get(serviceBase + '/api/dashboard?user=' + user).success(function (response) {
                 deferred.resolve(response);
             }).catch(function (err, status) {
                 deferred.reject(err);
@@ -19,11 +19,9 @@
         };
 
         //Get To Do List 
-        var _getToDoList = function () {
+        var _getToDoList = function (user) {
             var deferred = $q.defer();
-            console.log("In Dashboard service1");
-            $http.get(serviceBase + '/api/dashboard/GetToDoList').success(function (response) {
-               console.log("In Dashboard service2");
+            $http.get(serviceBase + '/api/dashboard/GetToDoList?user=' + user).success(function (response) {
                 deferred.resolve(response);
             }).catch(function (err, status) {
                 deferred.reject(err);

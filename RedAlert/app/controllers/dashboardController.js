@@ -1,21 +1,22 @@
-﻿angular.module('RedAlertApp').controller('dashboardController', ['$rootScope', '$scope', '$state','dashboardService','NgTableParams', function ($rootScope, $scope, $state,dashboardService,NgTableParams) {
+﻿angular.module('RedAlertApp').controller('dashboardController', ['$rootScope', '$scope', '$state', 'dashboardService', 'NgTableParams', '$localStorage', function ($rootScope, $scope, $state, dashboardService, NgTableParams, $localStorage) {
     $scope.$on('$viewContentLoaded', function () {
         $scope.ActivitiesProgress = [];
         $scope.ToDoList = [];
-        $scope.get();
-        $scope.getToDoList();
+        var user = $localStorage.userInfoStorage;
+        $scope.get(user.UserName);
+        $scope.getToDoList(user.UserName);
     });
 
-    $scope.get = function () {
-        dashboardService.get().then(function (response) {
+    $scope.get = function (user) {
+        dashboardService.get(user).then(function (response) {
             $scope.ActivitiesProgress = response.Data;
         }, function (err) {
             console.log(err);
         });
     };
 
-    $scope.getToDoList = function () { 
-        dashboardService.getToDoList().then(function (response) {
+    $scope.getToDoList = function (user) { 
+        dashboardService.getToDoList(user).then(function (response) {
             $scope.ToDoList = response.Data;
              $scope.tableParams = new NgTableParams({}, {
                  dataset: $scope.ToDoList

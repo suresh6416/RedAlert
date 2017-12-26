@@ -21,8 +21,7 @@
 
         var _getUserInfo = function (user) {
             var deferred = $q.defer();           
-
-            $http.get(serviceBase + '/api/Account/Get?user=' + user).success(function (response) {
+            $http.get(serviceBase + '/api/Account/GetUserInfo?user=' + user).success(function (response) {
                 deferred.resolve(response);
             }).error(function (err, status) {
                 deferred.reject(err);

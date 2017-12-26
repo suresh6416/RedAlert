@@ -8,15 +8,12 @@
     /*BEGIN: Login User*/
     $scope.login = function () {
         $scope.isLoading = true;
-        accountService.login($scope.User).then(function (response) {            
+        accountService.login($scope.User).then(function (response) {
             if (response !== null) {
-                $rootScope.userToken = response;     
-                $scope.getUserInfo($scope.User.UserName);
-
+                $rootScope.userToken = response;   
                 $window.sessionStorage.setItem('token', response.access_token);
                 $localStorage.userTokenStorage = response;
-                $state.go('home.dashboard');
-                toaster.success({ title: "Success", body: "You are successfully logged in" });
+                $scope.getUserInfo($scope.User.UserName);                
             }
         }, function (err) {
             $rootScope.userToken = null;
@@ -30,6 +27,8 @@
             if (response !== null) {
                 $rootScope.userInfo = response.Data;
                 $localStorage.userInfoStorage = $rootScope.userInfo;
+                $state.go('home.dashboard');
+                toaster.success({ title: "Success", body: "You are successfully logged in" });
             }
         }, function (err) {
             $rootScope.userInfo = "";

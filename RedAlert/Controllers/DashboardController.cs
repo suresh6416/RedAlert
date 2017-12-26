@@ -7,8 +7,7 @@ using RedAlert.Services.Contracts;
 using RedAlert.Common;
 
 namespace RedAlert.Controllers
-{
-  
+{  
     [RoutePrefix("api/dashboard")]
     [Authorize]
     public class DashboardController : BaseController
@@ -25,12 +24,12 @@ namespace RedAlert.Controllers
         /// <returns></returns>      
 
         [HttpGet]
-        public OperationResult Get()
+        public OperationResult Get(string user)
         {
             OperationResult result = new OperationResult();
             try
             {
-                result.Data = lDashboard.Get(LoggedInUserName);
+                result.Data = lDashboard.Get(user);
                 result.Status = OperationStatus.SUCCESS;
             }
             catch(Exception ex)
@@ -42,12 +41,12 @@ namespace RedAlert.Controllers
 
         [HttpGet]
         [Route("GetToDoList")]
-        public OperationResult GetToDoList()
+        public OperationResult GetToDoList(string user)
         {
             OperationResult result = new OperationResult();
             try
             {
-                result.Data = lDashboard.GetToDoList(LoggedInUserName);
+                result.Data = lDashboard.GetToDoList(user);
                 result.Status = OperationStatus.SUCCESS;
             }
             catch (Exception ex)
