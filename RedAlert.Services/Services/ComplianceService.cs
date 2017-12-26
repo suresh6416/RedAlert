@@ -16,26 +16,27 @@ namespace RedAlert.Services.Services
     {
         APIContext _webcontext = new APIContext();
 
-        public List<ComplianceResult> Get()
+        public List<ComplianceResult> Get(string userName)
         {
-            var compliances = StoredProcedure<ComplianceResult>.Execute(StoredProcedureName.PRC_GET_COMPLIANCES, new StoredProcedureParams()).ToList();
+            var compliances = StoredProcedure<ComplianceResult>.Execute(StoredProcedureName.PRC_GET_COMPLIANCES, new ComplianceResultParams { ComplianceID = null, UserName = userName }).ToList();
             return compliances;
         }
 
         public ComplianceResult GetById(int id)
         {
-            var compliance = StoredProcedure<ComplianceResult>.Execute(StoredProcedureName.PRC_GET_COMPLIANCES, new ComplianceResultParams { ComplianceID = id}).FirstOrDefault();
+            var compliance = StoredProcedure<ComplianceResult>.Execute(StoredProcedureName.PRC_GET_COMPLIANCES, new ComplianceResultParams { ComplianceID = id, UserName = null}).FirstOrDefault();
             return compliance;
         }
 
         public void Save(ComplianceResult data, string loggedInUserName)
         {
-            var comp = _webcontext.Compliances.Where(m => m.ID == data.ID).FirstOrDefault();
+            var comp = _webcontext.Compliances.Where(m => m.ID == data.ComplianceId).FirstOrDefault();
 
             if (comp == null)
             {
                 comp = new Compliance();
 
+                comp.ActivityInfoId = data.ID;
                 comp.Description = data.Description;
                 comp.DueDate = data.DueDate;
                 comp.CompletionDate = data.CompletionDate;
@@ -53,7 +54,8 @@ namespace RedAlert.Services.Services
                 _webcontext.Compliances.Add(comp);
             }
             else
-            {                
+            {
+                comp.ActivityInfoId = data.ID;
                 comp.Description = data.Description;
                 comp.DueDate = data.DueDate;
                 comp.CompletionDate = data.CompletionDate;
@@ -66,8 +68,16 @@ namespace RedAlert.Services.Services
                 comp.IsDeviationAcceptable = data.IsDeviationAcceptable;
                 comp.UpdatedBy = loggedInUserName;
                 comp.UpdatedOn = DateTime.Now;
-            }
+            }            
 
+            //Update status
+            var actInfo = _webcontext.ActivityInfoes.Where(m => m.ID == data.ID).FirstOrDefault();
+            if(actInfo != null)
+            {
+                actInfo.Status = data.Status;
+                actInfo.UpdatedBy = loggedInUserName;
+                actInfo.UpdatedOn = DateTime.Now;
+            }
             _webcontext.SaveChanges();
         }
 

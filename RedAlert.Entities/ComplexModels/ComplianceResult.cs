@@ -10,6 +10,7 @@ namespace RedAlert.Entities.ComplexModels
     public class ComplianceResult
     {
         public int ID { get; set; }
+        public int? ComplianceId { get; set; }
         public int AreaId { get; set; }
         public string AreaName { get; set; }
         public int ActivityId { get; set; }
@@ -23,7 +24,7 @@ namespace RedAlert.Entities.ComplexModels
         public string Remarks { get; set; }
         public bool? HasDeviation { get; set; }
         public string DeviationDesc { get; set; }
-        public string IsDeviationAcceptable { get; set; }
+        public bool? IsDeviationAcceptable { get; set; }
         public string Status { get; set; }
         public string PreRespPerson { get; set; }
         public string SecRespPerson { get; set; }
@@ -31,6 +32,7 @@ namespace RedAlert.Entities.ComplexModels
 
     public class ComplianceResultParams: StoredProcedureParams
     {
-        public int ComplianceID { get; set; }
-    }
+        public int? ComplianceID { get; set; }
+        public string UserName { get; set; }
+    }   
 }

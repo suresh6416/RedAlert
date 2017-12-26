@@ -20,20 +20,20 @@
                             <form name="frmArea">
                                 <div class="form-horizontal">
                                     <div class="form-group">
-                                        <label class="control-label col-md-3">S.No :</label>
+                                        <label class="control-label col-md-3">S.No</label>
                                         <div class="col-md-4">
                                             <input type="text" class="form-control" ng-model="Area.ID" disabled>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-md-3">Name :</label>
+                                        <label class="control-label col-md-3">Name <span class="text-danger">*</span></label>
                                         <div class="col-md-4">
                                             <input type="text" class="form-control" name="description" ng-model="Area.Name" required>
                                             <span class="has-error" ng-show="frmArea.description.$invalid && !frmArea.description.$pristine">This is required.</span>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-md-3">Code :</label>
+                                        <label class="control-label col-md-3">Code <span class="text-danger">*</span></label>
                                         <div class="col-md-4">
                                             <input type="text" class="form-control" name="code" ng-model="Area.Code" required>
                                             <span class="has-error" ng-show="frmArea.code.$invalid && !frmArea.code.$pristine">This is required.</span>

@@ -1,4 +1,4 @@
-﻿angular.module('RedAlertApp').controller('complianceController', ['$rootScope', '$scope', '$state', 'complianceService','dataLookupService', 'toaster', 'NgTableParams', function ($rootScope, $scope, $state, complianceService,dataLookupService, toaster, NgTableParams) {
+﻿angular.module('RedAlertApp').controller('complianceController', ['$rootScope', '$scope', '$state', 'complianceService', 'dataLookupService', 'toaster', 'NgTableParams', function ($rootScope, $scope, $state, complianceService, dataLookupService, toaster, NgTableParams) {
     $scope.$on('$viewContentLoaded', function () {
         $scope.Compliances = [];
         $scope.UsersList = [];
@@ -19,7 +19,7 @@
             $scope.tableParams = new NgTableParams({ page: 1, count: 10 }, {
                 dataset: $scope.Compliances
             });
-            
+
         }, function (err) {
             console.log(err);
         });
@@ -35,11 +35,13 @@
         });
     };
 
-     $scope.save = function () {
-         $scope.isLoading = true;
+    $scope.save = function () {
+        $scope.isLoading = true;
         if ($scope.frmCompliance.$valid) {
-            //$scope.Compliance.AreaId = $scope.SelectedArea.ID;
-            //$scope.Compliance.ActivityId = $scope.SelectedActivity.ID;
+            $scope.Compliance.IsDelayed = $scope.Compliance.IsDelayed !== null ? $scope.Compliance.IsDelayed : false;
+            $scope.Compliance.IsDelayAcceptable = $scope.Compliance.IsDelayAcceptable !== null ? $scope.Compliance.IsDelayAcceptable : false;
+            $scope.Compliance.HasDeviation = $scope.Compliance.HasDeviation !== null ? $scope.Compliance.HasDeviation : false;
+            $scope.Compliance.IsDeviationAcceptable = $scope.Compliance.IsDeviationAcceptable !== null ? $scope.Compliance.IsDeviationAcceptable : false;
 
             complianceService.save($scope.Compliance).then(function (response) {
                 $scope.isLoading = false
@@ -59,7 +61,13 @@
         complianceService.getById(compliance.ID).then(function (response) {
             $scope.Compliance = response.Data;
             $scope.Compliance.DueDate = new Date($scope.Compliance.DueDate);
-            $scope.Compliance.CompletionDate = new Date($scope.Compliance.CompletionDate);
+            $scope.Compliance.CompletionDate = $scope.Compliance.CompletionDate !== null ? new Date($scope.Compliance.CompletionDate) : new Date();
+
+            if ($scope.Compliance.CompletionDate > $scope.Compliance.DueDate)
+                $scope.Compliance.IsDelayed = true;
+            else
+                $scope.Compliance.IsDelayed = false;
+
             $scope.selectedRow = compliance.ID;
             $scope.isShowComplianceGrid = false;
             $scope.isHighlightSelectedRow = true;
@@ -77,10 +85,17 @@
     $scope.getCurrentRecordId = function () {
         complianceService.getCurrentRecordId().then(function (response) {
             $scope.Compliance.ID = response.Data;
-           
+
         }, function (err) {
             console.log(err);
         });
+    };
+
+    $scope.checkIsDelayed = function () {
+        if (($scope.Compliance.DueDate !== "" && $scope.Compliance.CompletionDate !== "") && $scope.Compliance.CompletionDate > $scope.Compliance.DueDate)
+            $scope.Compliance.IsDelayed = true;
+        else
+            $scope.Compliance.IsDelayed = false;
     };
 
     function ComplianceModel() {
@@ -98,7 +113,7 @@
         this.Remarks = "";
         this.HasDeviation = false;
         this.DeviationDesc = "";
-        this.IsDeviationAcceptable = "";
+        this.IsDeviationAcceptable = false;
         this.Status = "";
         this.PreRespPerson = "";
         this.SecRespPerson = "";

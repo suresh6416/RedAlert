@@ -9,7 +9,7 @@ namespace RedAlert.Services.Contracts
 {
     public interface IComplianceService
     {
-        List<ComplianceResult> Get();
+        List<ComplianceResult> Get(string userName);
         ComplianceResult GetById(int id);
         void Save(ComplianceResult data, string loggedInUserName);
         int GetCurrentRecordId();

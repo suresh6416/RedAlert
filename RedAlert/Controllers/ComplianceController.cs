@@ -31,7 +31,7 @@ namespace RedAlert.Controllers
             OperationResult result = new OperationResult();
             try
             {
-                result.Data = lCompliance.Get();
+                result.Data = lCompliance.Get(LoggedInUserName);
                 result.Status = OperationStatus.SUCCESS;
             }
             catch (Exception ex)
