@@ -353,6 +353,7 @@
     <Content Include="img\clk2.png" />
     <Content Include="img\colorful.jpg" />
     <Content Include="img\images.jpg" />
+    <Content Include="img\website-under-construction.gif" />
     <Content Include="index.html" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
