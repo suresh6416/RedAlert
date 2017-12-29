@@ -74,14 +74,14 @@
                                     <div class="form-group">
                                         <label class="control-label col-sm-4">Previous Date <span class="text-danger">*</span></label>
                                         <div class="col-sm-5">
-                                            <input type="date" name="PreviousDate" class="form-control" ng-model="ActivityInfo.PreviousDate" value="{{ActivityInfo.PreviousDate}}" ng-model-options="{timezone: 'utc'}" placeholder="" required>
+                                            <input type="date" name="PreviousDate" class="form-control" ng-model="ActivityInfo.PreviousDate"  ng-model-options="{timezone:'+0530'}" placeholder="" required>
                                             <span class="has-error" ng-show="frmActivityInfo.PreviousDate.$invalid && !frmActivityInfo.PreviousDate.$pristine">This is required.</span>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-sm-4">Next Due Date <span class="text-danger">*</span></label>
                                         <div class="col-sm-5">
-                                            <input type="date" name="NextDueDate" class="form-control" ng-model="ActivityInfo.NextDueDate" value="{{ActivityInfo.NextDueDate}}" ng-model-options="{timezone: 'utc'}" placeholder="" required>                                            
+                                            <input type="date" name="NextDueDate" class="form-control" ng-model="ActivityInfo.NextDueDate" ng-model-options="{timezone:'+0530'}" placeholder="" required>                                            
                                             <span class="has-error" ng-if="ActivityInfo.PreviousDate > ActivityInfo.NextDueDate">Next Due Date must be after Previous Date</span>
                                             <span class="has-error" ng-show="frmActivityInfo.NextDueDate.$invalid && !frmActivityInfo.NextDueDate.$pristine">This is required.</span>
                                         </div>
@@ -89,7 +89,7 @@
                                     <div class="form-group">
                                         <label class="control-label col-sm-4">Start Job Date <span class="text-danger">*</span></label>
                                         <div class="col-sm-5">
-                                            <input type="date" name="StartJobDate" class="form-control" ng-model="ActivityInfo.StartJobDate"  value="{{ActivityInfo.StartJobDate}}" ng-model-options="{timezone: 'utc'}" placeholder="" required>
+                                            <input type="date" name="StartJobDate" class="form-control" ng-model="ActivityInfo.StartJobDate"  ng-model-options="{timezone:'+0530'}" placeholder="" required>
                                             <span class="has-error" ng-if="ActivityInfo.NextDueDate < ActivityInfo.StartJobDate" > Start Job Date must be before Next Due Date</span>
                                             <span class="has-error" ng-if="ActivityInfo.PreviousDate > ActivityInfo.StartJobDate">Start Job Date must be after Previous Date</span>
                                             <span class="has-error" ng-show="frmActivityInfo.StartJobDate.$invalid && !frmActivityInfo.StartJobDate.$pristine">This is required.</span>

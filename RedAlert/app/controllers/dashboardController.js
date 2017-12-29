@@ -21,7 +21,7 @@
              $scope.tableParams = new NgTableParams({}, {
                  dataset: $scope.ToDoList
             });
-            console.log($scope.ToDoList);
+            
         },
         function (err) {
             console.log(err);

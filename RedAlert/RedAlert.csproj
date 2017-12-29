@@ -289,6 +289,7 @@
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\DataLookupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -315,6 +316,7 @@
     <Content Include="app\services\complianceService.js" />
     <Content Include="app\services\dashboardService.js" />
     <Content Include="app\services\dataLookupService.js" />
+    <Content Include="app\services\reportService.js" />
     <Content Include="app\views\account\login.html" />
     <Content Include="app\views\activity.html" />
     <Content Include="app\views\activityInfo.html" />
@@ -327,10 +329,12 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\bootstrap-datepicker.min.css" />
+    <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\daterangepicker.css" />
     <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\css\ionicons.min.css" />
     <Content Include="Content\css\ng-table.min.css" />
+    <Content Include="Content\css\print.css" />
     <Content Include="Content\custom.css" />
     <Content Include="Content\dist\AdminLTE.min.css" />
     <Content Include="Content\dist\icons-2x.png" />
@@ -407,6 +411,12 @@
     <Content Include="Content\fonts\ionicons.ttf" />
     <Content Include="Content\fonts\ionicons.woff" />
     <Content Include="Scripts\angular-moment.min.js.map" />
+    <None Include="Properties\PublishProfiles\RedAlertSite - FTP %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\RedAlertSite - FTP %283%29.pubxml" />
+    <None Include="Properties\PublishProfiles\RedAlertSite - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\RedAlertSite - Web Deploy %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\RedAlertSite - Web Deploy %283%29.pubxml" />
+    <None Include="Properties\PublishProfiles\RedAlertSite - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dist\adminlte.min.js" />
     <Content Include="Scripts\dist\bootstrap.min.js" />

@@ -154,6 +154,6 @@ RedAlertApp.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', fun
 
 /*Setup Red Alert App Constants*/
 RedAlertApp.constant('redAlertConstants', {
-    apiServiceBaseUri: 'http://localhost:4151'
+    apiServiceBaseUri: 'http://redalertsite.azurewebsites.net'
 });
 
